@@ -4,937 +4,670 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>9월 1일 맥체인 성경읽기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap');
-
         :root {
-            --color-samuel: #8A2BE2; /* BlueViolet */
-            --color-corinthians: #1E90FF; /* DodgerBlue */
-            --color-ezekiel: #DAA520; /* GoldenRod */
-            --color-psalms: #20B2AA; /* LightSeaGreen */
-            --color-integration: #708090; /* SlateGray */
-            --background-color: #f8f9fa;
-            --card-background-color: #ffffff;
-            --text-color: #212529;
-            --header-text-color: #ffffff;
-            --subtitle-color: #ced4da;
-            --border-color: #dee2e6;
-            --shadow-color: rgba(0, 0, 0, 0.075);
+            --color-book1: #4285F4; /* 파랑 */
+            --color-book2: #DB4437; /* 빨강 */
+            --color-book3: #F4B400; /* 노랑 */
+            --color-book4: #0F9D58; /* 초록 */
+            --color-integration: #808080; /* 회색 */
+            --font-main: 'Noto Sans KR', sans-serif;
+            --font-serif: 'Noto Serif KR', serif;
         }
 
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
+            font-family: var(--font-main);
             line-height: 1.8;
-            word-break: keep-all;
+            color: #333;
+            background-color: #fdfdfd;
+            margin: 0;
+            padding: 20px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        .header {
-            background: linear-gradient(135deg, #485461 0%, #28313b 100%);
-            color: var(--header-text-color);
-            padding: 50px 30px;
-            text-align: center;
-            border-radius: 16px;
+        .title-section {
+            background-color: #f2f5f8;
+            padding: 25px 30px;
+            border-radius: 12px;
             margin-bottom: 40px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            text-align: center;
         }
 
         h1 {
-            font-family: 'Noto Serif KR', serif;
-            font-size: 2.8em;
-            margin: 0 0 10px 0;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-        
-        h1 .subtitle {
-            font-family: 'Noto Sans KR', sans-serif;
-            font-size: 0.5em;
-            font-weight: 400;
-            color: var(--subtitle-color);
-            display: block;
-            margin-top: 15px;
-            letter-spacing: 1px;
+            font-family: var(--font-serif);
+            font-size: 2.2em;
+            margin: 0;
+            color: #2c3e50;
         }
 
-        .scripture-range {
+        h1 .subtitle {
+            font-family: var(--font-main);
+            font-size: 0.5em;
+            font-weight: 400;
+            color: #555;
+            display: block;
+            margin-top: 10px;
+        }
+        
+        .intro-passage {
+            font-family: var(--font-serif);
             font-size: 1.2em;
-            color: var(--subtitle-color);
-            margin: 0;
+            color: #7f8c8d;
+            margin-top: 15px;
         }
 
         .chapter-card {
-            background-color: var(--card-background-color);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 35px;
-            margin-bottom: 35px;
-            box-shadow: 0 6px 18px var(--shadow-color);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-left: 8px solid;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
         }
 
         .chapter-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
-        
-        .chapter-card h2 {
-            font-family: 'Noto Serif KR', serif;
-            font-size: 2.2em;
+
+        .card-book1 { border-left-color: var(--color-book1); }
+        .card-book2 { border-left-color: var(--color-book2); }
+        .card-book3 { border-left-color: var(--color-book3); }
+        .card-book4 { border-left-color: var(--color-book4); }
+        .integration-card { border-left-color: var(--color-integration); }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8em;
             margin-top: 0;
             margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid;
-        }
-
-        .chapter-card strong {
-            font-family: 'Noto Serif KR', serif;
-            font-weight: 600;
-            color: inherit;
-            display: block;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .samuel-card h2, .samuel-card strong { color: var(--color-samuel); border-color: var(--color-samuel);}
-        .corinthians-card h2, .corinthians-card strong { color: var(--color-corinthians); border-color: var(--color-corinthians); }
-        .ezekiel-card h2, .ezekiel-card strong { color: var(--color-ezekiel); border-color: var(--color-ezekiel); }
-        .psalms-card h2, .psalms-card strong { color: var(--color-psalms); border-color: var(--color-psalms); }
-        .integration-card h2, .integration-card strong { color: var(--color-integration); border-color: var(--color-integration); }
-
-        .section {
-            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
         }
         
-        .section h3 {
-            font-family: 'Noto Serif KR', serif;
-            font-size: 1.6em;
+        h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4em;
+            margin-top: 30px;
             margin-bottom: 15px;
-            padding-left: 10px;
-            border-left: 4px solid;
-            border-color: inherit;
+            color: #333;
         }
 
-        .svg-container {
-            text-align: center;
-            margin: 25px 0;
+        .bible-text {
+            background-color: #f9f9f9;
+            border-radius: 8px;
             padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 12px;
-            border: 1px solid #e9ecef;
+            margin-top: 20px;
+            border: 1px solid #eee;
         }
 
-        svg {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        .full-text p {
-            margin: 0 0 8px 0;
+        .bible-text p {
+            margin: 0 0 10px 0;
         }
 
         .verse-number {
-            font-size: 0.75em;
-            vertical-align: super;
-            color: #868e96;
-            margin-right: 5px;
-            font-weight: 500;
+            font-weight: bold;
+            color: #777;
+            margin-right: 8px;
+            font-size: 0.9em;
         }
         
-        .key-verse {
-            background-color: #fff9e6;
-            border-left: 5px solid;
-            padding: 20px;
-            margin: 25px 0;
+        .bible-text strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        .card-book1 .bible-text strong { color: var(--color-book1); }
+        .card-book2 .bible-text strong { color: var(--color-book2); }
+        .card-book3 .bible-text strong { color: var(--color-book3); }
+        .card-book4 .bible-text strong { color: var(--color-book4); }
+        .integration-card .bible-text strong { color: var(--color-integration); }
+
+
+        .svg-diagram {
+            width: 100%;
+            margin: 20px 0;
+            background-color: #fafafa;
             border-radius: 8px;
-        }
-        .key-verse p:last-child { margin-bottom: 0; }
-        .samuel-card .key-verse { border-color: var(--color-samuel); }
-        .corinthians-card .key-verse { border-color: var(--color-corinthians); }
-        .ezekiel-card .key-verse { border-color: var(--color-ezekiel); }
-        .psalms-card .key-verse { border-color: var(--color-psalms); }
-
-        .floating-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 1000;
+            padding: 15px;
+            box-sizing: border-box;
         }
 
-        .fab {
-            background-color: #343a40;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .fab:hover {
-            background-color: #495057;
-            transform: scale(1.1);
-        }
-        #qa-fab {
-            background-color: var(--color-corinthians);
-            font-weight: bold;
-            font-size: 20px;
-        }
-        #qa-fab:hover {
-            background-color: #4ca6ff;
-        }
-
-        #qa-modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5);
-            animation: fadeIn 0.4s;
-        }
-
-        .modal-content {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            background-color: #fefefe;
-            width: 100%;
-            max-width: 450px;
-            height: 75%;
-            border-radius: 20px 0 0 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: slideIn 0.4s;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .modal-header {
-            padding: 20px;
-            background-color: var(--color-corinthians);
-            color: white;
-            border-radius: 20px 0 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .modal-header h2 { margin: 0; font-size: 1.4em; }
-
-        .close-button {
-            color: white;
-            font-size: 32px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .close-button:hover { transform: rotate(90deg); }
-
-        .modal-body {
-            padding: 20px;
-            flex-grow: 1;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        #qa-form-container {
-            padding: 15px 20px;
-            border-top: 1px solid var(--border-color);
-            background-color: #f8f9fa;
-        }
-
-        #qa-form {
-            display: flex;
-        }
-
-        #qa-form input {
-            flex-grow: 1;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            margin-right: 10px;
-            font-size: 1em;
-        }
-        #qa-form button {
-            background-color: var(--color-corinthians);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 0 20px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .message {
-            padding: 10px 15px;
-            border-radius: 18px;
-            max-width: 85%;
-            word-wrap: break-word;
-        }
-
-        .user-message {
-            background-color: #e3f2fd;
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-        }
-
-        .ai-message {
-            background-color: #f1f3f5;
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-        }
-        
-        /* Table Styles */
-        .analysis-table {
+        table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            font-size: 0.95em;
         }
-        .analysis-table th, .analysis-table td {
-            border: 1px solid var(--border-color);
+
+        th, td {
+            border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
         }
-        .analysis-table th {
-            background-color: #f8f9fa;
-            font-weight: 500;
-            font-family: 'Noto Serif KR', serif;
-        }
-        .analysis-table td {
-            vertical-align: top;
-        }
-        .analysis-table .theme-col {
-            width: 20%;
+
+        th {
+            background-color: #f2f2f2;
             font-weight: bold;
-            color: var(--color-integration);
+        }
+
+        .floating-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .play-pause-btn {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .play-pause-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        .play-pause-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: #555;
         }
 
         footer {
             text-align: center;
-            padding: 30px;
-            margin-top: 20px;
+            margin-top: 50px;
+            color: #999;
             font-size: 0.9em;
-            color: #6c757d;
         }
-
-        @keyframes slideIn { from {bottom: -100%; opacity: 0} to {bottom: 0; opacity: 1} }
-        @keyframes fadeIn { from {opacity: 0} to {opacity: 1} }
-
     </style>
 </head>
 <body>
-    <audio id="bible-audio" src="https://sen0991-my.sharepoint.com/:u:/g/personal/mathtox_munhyeon_hs_kr/EVSYel68RZhEv-evaw1I4L8BCV0_lnYAL3UAopzhGpIE8Q?download=1" preload="none"></audio>
-    
-    <div class="floating-controls">
-        <button id="audio-control" class="fab">▶</button>
-        <button id="qa-fab" class="fab">Q&A</button>
-    </div>
-
-    <div id="qa-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>맥체인 AI에게 질문하기</h2>
-                <span class="close-button">&times;</span>
-            </div>
-            <div class="modal-body" id="conversation">
-                <div class="message ai-message">안녕하세요! 오늘 본문에 대해 궁금한 점이 있으신가요? 개혁주의 신학에 기반하여 답변해 드리겠습니다.</div>
-            </div>
-            <div id="qa-form-container">
-                <form id="qa-form" onsubmit="askQuestion(event)">
-                    <input type="text" id="question-input" placeholder="성경에 대해 질문해보세요..." autocomplete="off">
-                    <button type="submit">전송</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <div class="container">
-        <header class="header">
-            <h1>9월 1일 맥체인 성경읽기<br><span class="subtitle">주의 뜻 행하기를 즐겨워하나이다</span></h1>
-            <p class="scripture-range">사무엘상 25 | 고린도전서 6 | 에스겔 4 | 시편 40, 41</p>
-        </header>
+        <div class="title-section">
+            <h1>9월 1일 맥체인 성경읽기<span class="subtitle">주의 길을 기다리는 자의 복</span></h1>
+            <p class="intro-passage">삼상25 | 고전6 | 겔4 | 시40,41</p>
+        </div>
 
-        <!-- 사무엘상 25장 카드 -->
-        <div class="chapter-card samuel-card">
-            <h2 style="border-color: var(--color-samuel);">사무엘상 25장</h2>
-            <div class="section" style="border-color: var(--color-samuel);">
-                <h3>개요 (Overview)</h3>
-                <p>사무엘상 25장은 다윗의 도피 시절, 지혜로운 여인 아비가일이 어리석은 남편 나발의 악행으로 인해 촉발될 뻔했던 대학살을 막는 극적인 사건을 다룹니다. 이 이야기는 개인의 복수심을 하나님의 공의로운 심판에 맡기는 성숙한 신앙과, 한 사람의 지혜로운 중재가 공동체를 파멸에서 구원하는 하나님의 섭리를 생생하게 보여줍니다.</p>
-            </div>
+        <!-- Card 1: 사무엘상 25장 -->
+        <div class="chapter-card card-book1">
+            <h2>사무엘상 25장: 지혜가 분노를 이기다</h2>
+            <h3>개요 (Overview)</h3>
+            <p>사무엘상 25장은 다윗의 분노와 아비가일의 지혜로운 중재가 극명하게 대비되는 사건을 다룹니다. 어리석은 나발이 다윗의 호의를 악으로 갚자, 다윗은 분노하여 그 집안을 멸하려 합니다. 그러나 나발의 아내 아비가일이 신속하고 지혜롭게 행동하여 다윗의 칼을 막고 유혈을 피하게 합니다. 결국 하나님께서 직접 나발을 심판하시고, 다윗은 아비가일을 아내로 맞이하며 하나님의 공의와 섭리를 찬양합니다.</p>
 
-            <div class="section" style="border-color: var(--color-samuel);">
-                <h3>시각적 분석 (Visual Analysis)</h3>
-                <div class="svg-container">
-                    <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-                        <style>.label{font-family:'Noto Sans KR',sans-serif;font-size:11px;fill:#333}.title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:bold}.david-txt{fill:var(--color-samuel)}.abigail-txt{fill:var(--color-psalms)}.nabal-txt{fill:var(--color-ezekiel)}</style>
-                        <text x="200" y="25" text-anchor="middle" class="title" style="font-size:16px;">인물 관계와 갈등 해소</text>
-                        <!-- 나발 -->
-                        <rect x="160" y="50" width="80" height="40" rx="5" fill="#fffbe6" stroke="var(--color-ezekiel)" stroke-width="2"/>
-                        <text x="200" y="75" text-anchor="middle" class="title nabal-txt">나발</text>
-                        <text x="200" y="90" text-anchor="middle" class="label" style="font-size:9px;">(어리석음, 모욕)</text>
-                        <!-- 다윗 -->
-                        <circle cx="70" cy="150" r="30" fill="#f3e5f5" stroke="var(--color-samuel)" stroke-width="2"/>
-                        <text x="70" y="145" text-anchor="middle" class="title david-txt">다윗</text>
-                        <text x="70" y="162" text-anchor="middle" class="label" style="font-size:9px;">(분노, 복수)</text>
-                        <!-- 아비가일 -->
-                        <ellipse cx="330" cy="150" rx="40" ry="30" fill="#e0f2f1" stroke="var(--color-psalms)" stroke-width="2"/>
-                        <text x="330" y="145" text-anchor="middle" class="title abigail-txt">아비가일</text>
-                        <text x="330" y="162" text-anchor="middle" class="label" style="font-size:9px;">(지혜, 중재)</text>
-                        <!-- 화살표 -->
-                        <path d="M160,80 Q100,90 85,125" stroke="var(--color-ezekiel)" stroke-width="2" fill="none" marker-end="url(#arrow)" stroke-dasharray="4,2"/>
-                        <text x="120" y="100" class="label nabal-txt" transform="rotate(-25 120,100)">모욕</text>
-                        <path d="M100,150 H 290" stroke="#ccc" stroke-width="1.5" fill="none"/>
-                        <text x="195" y="140" text-anchor="middle" class="label">갈등</text>
-                        <path d="M290,150 Q180,180 100,160" stroke="var(--color-psalms)" stroke-width="2.5" fill="none" marker-end="url(#arrow-green)"/>
-                        <text x="195" y="185" text-anchor="middle" class="label abigail-txt">지혜로운 중재로 갈등 해소</text>
-                        <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-ezekiel)"/></marker><marker id="arrow-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-psalms)"/></marker></defs>
-                    </svg>
-                </div>
-            </div>
+            <h3>시각적 분석 (Visual Analysis)</h3>
+            <svg class="svg-diagram" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .svg-text { font-family: var(--font-main); font-size: 10px; fill: #333; }
+                        .svg-text-white { font-family: var(--font-main); font-size: 10px; fill: #fff; paint-order: stroke; stroke: #000; stroke-width: 0.3px; }
+                        .arrow { fill: #555; }
+                    </style>
+                </defs>
+                <rect x="10" y="10" width="100" height="40" rx="5" fill="#f2f5f8" stroke="#ccc"/>
+                <text x="60" y="35" text-anchor="middle" class="svg-text">나발의 모욕</text>
+                
+                <path d="M 115 30 L 145 30" stroke="#DB4437" stroke-width="2" marker-end="url(#arrow-red)"/>
+                <defs><marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#DB4437" /></marker></defs>
+                <rect x="150" y="10" width="100" height="40" rx="5" fill="#DB4437"/>
+                <text x="200" y="35" text-anchor="middle" class="svg-text-white">다윗의 분노</text>
+                
+                <path d="M 255 30 L 285 30" stroke="#555" stroke-width="2" marker-end="url(#arrow-head)"/>
+                <defs><marker id="arrow-head" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#555" /></marker></defs>
+                <rect x="290" y="10" width="100" height="40" rx="5" fill="#f2f5f8" stroke="#ccc"/>
+                <text x="340" y="35" text-anchor="middle" class="svg-text">유혈 보복 계획</text>
 
-            <div class="section" style="border-color: var(--color-samuel);">
-                <h3>배경지식 및 신학적 통찰 (Context & Theology)</h3>
-                <p>다윗은 기름 부음 받은 왕이었으나, 사울의 위협을 피해 광야에서 고난의 시간을 보내고 있었습니다. 이런 상황에서 나발의 모욕은 다윗의 인간적인 분노를 폭발시키는 기폭제가 되었습니다. 개혁주의 신학은 이 사건을 통해 하나님의 <strong>주권적인 섭리</strong>를 강조합니다. 하나님은 아비가일이라는 한 여인의 지혜를 사용하여, 장차 이스라엘의 왕이 될 다윗의 손이 무고한 피로 더러워지는 것을 막으셨습니다. 이는 하나님의 백성을 죄로부터 보호하고 그분의 거룩한 계획을 이루어 가시는 하나님의 세밀한 통치를 보여줍니다. 또한, 이 사건은 개인의 복수는 하나님의 영역임을 분명히 하며(롬 12:19), 성도는 억울한 상황 속에서도 하나님의 공의로운 심판을 신뢰하며 기다려야 함을 가르칩니다.</p>
-            </div>
+                <rect x="150" y="90" width="100" height="40" rx="5" fill="#0F9D58"/>
+                <text x="200" y="115" text-anchor="middle" class="svg-text-white">아비가일의 중재</text>
 
-            <div class="section" style="border-color: var(--color-samuel);">
-                <h3>주요 구절 해설 (Key Verse Commentary)</h3>
-                <div class="key-verse">
-                    <p><strong>사무엘상 25:29</strong><br>"...내 주의 생명은 내 주의 하나님 여호와와 함께 생명 싸개 속에 싸여 있을 것이요..."</p>
-                    <p><strong>해설:</strong> 아비가일의 이 고백은 다윗의 미래에 대한 깊은 신학적 통찰을 보여줍니다. '생명 싸개'는 귀중품을 안전하게 보관하는 주머니를 의미하며, 다윗의 생명이 하나님의 절대적인 주권과 보호 아래 안전하게 지켜지고 있음을 선포하는 것입니다. 이는 어떠한 인간적인 위협이나 계획도 하나님의 택한 자를 향한 그분의 선한 뜻을 꺾을 수 없다는 '성도의 견인' 교리를 연상시킵니다. 매튜 헨리는 이 구절을 해설하며 "하나님의 섭리는 그분의 백성을 위한 가장 안전한 피난처이며, 그들의 영혼은 은혜의 울타리 안에 안전하게 거한다"고 말했습니다. 아비가일은 다윗이 스스로 복수할 필요 없이, 하나님께서 그를 완벽하게 보호하고 계심을 상기시킨 것입니다.</p>
-                </div>
-                <div class="key-verse">
-                    <p><strong>사무엘상 25:32-33</strong><br>"다윗이 아비가일에게 이르되... 오늘 내가 피를 흘릴 것과 친히 복수하는 것을 네가 막았느니라"</p>
-                    <p><strong>해설:</strong> 다윗은 아비가일의 지혜로운 중재를 통해 자신의 분노가 얼마나 큰 죄로 이어질 뻔했는지를 깨닫고, 그 배후에서 역사하신 하나님을 찬양합니다. 그는 아비가일을 칭찬하는 것을 넘어, 그녀를 보내신 하나님께 영광을 돌립니다. 이는 영적으로 성숙한 지도자의 모습을 보여줍니다. 그는 자신의 감정적 실수를 인정하고, 죄의 길에서 돌이키게 한 하나님의 은혜에 즉각적으로 반응합니다. 칼빈은 이 부분을 주해하며 "경건한 자들은 다른 이의 선한 충고를 받을 때, 그것을 하나님께서 보내신 도움의 손길로 여기고 겸손히 받아들인다"고 강조했습니다. 다윗의 이 고백은 우리에게 다른 사람의 충고를 통해 역사하시는 하나님의 음성을 듣는 겸손함이 필요함을 가르칩니다.</p>
-            </div>
+                <path d="M 60 55 L 60 150 L 145 150" stroke="#4285F4" stroke-width="2" fill="none"/>
+                <path d="M 145 110 L 150 110" stroke="#4285F4" stroke-width="2" marker-end="url(#arrow-blue)"/>
+                <defs><marker id="arrow-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4285F4" /></marker></defs>
+                
+                <path d="M 200 55 L 200 85" stroke="#555" stroke-width="2" marker-end="url(#arrow-head)" fill="none"/>
+                
+                <path d="M 200 135 L 200 165" stroke="#555" stroke-width="2" marker-end="url(#arrow-head)" fill="none"/>
+                <rect x="10" y="170" width="180" height="40" rx="5" fill="#f2f5f8" stroke="#ccc"/>
+                <text x="100" y="195" text-anchor="middle" class="svg-text">하나님의 직접 심판 (나발의 죽음)</text>
+                
+                <rect x="210" y="170" width="180" height="40" rx="5" fill="#f2f5f8" stroke="#ccc"/>
+                <text x="300" y="195" text-anchor="middle" class="svg-text">다윗의 구원과 찬양 (아비가일 맞이)</text>
+            </svg>
 
-            <div class="section full-text" style="border-color: var(--color-samuel);">
-                <h3>성경 본문 (Full Text)</h3>
+            <h3>배경지식 및 신학적 통찰 (Context & Theology)</h3>
+            <p>다윗은 사울을 피해 광야에서 도피 생활을 하던 중이었습니다. 그는 자신을 따르는 무리들을 이끌며 주변 지역의 목자들을 보호해주는 역할을 했습니다. 나발은 그 지역의 큰 부자였으나, 그의 이름 뜻('어리석은 자')처럼 완고하고 불의했습니다. 이 사건은 개인적인 복수심에 불타오르는 다윗을 하나님께서 아비가일이라는 지혜로운 여인을 통해 막으시는 '일반 은총'의 한 예시를 보여줍니다. 또한, 최종적인 심판은 인간의 손이 아닌 하나님의 주권에 속해 있음을 분명히 합니다. 다윗이 복수를 멈추고 하나님의 처분을 기다린 것은, 장차 왕으로서 가져야 할 공의와 절제의 덕목을 배우는 중요한 훈련 과정이었습니다.</p>
+
+            <h3>주요 구절 해설 (Key Verse Commentary)</h3>
+            <p><strong>사무엘상 25:32-33</strong> "다윗이 아비가일에게 이르되 오늘 너를 보내어 나를 영접하게 하신 이스라엘의 하나님 여호와를 찬송할지로다 또 네 지혜를 칭찬할지며 또 네게 복이 있을지로다 오늘 내가 피를 흘릴 것과 친히 복수하는 것을 네가 막았느니라"</p>
+            <p>다윗은 아비가일의 말에서 하나님의 음성을 듣습니다. 그는 아비가일 개인을 칭찬하기에 앞서, 그녀를 보내신 하나님을 먼저 찬양합니다. 이는 모든 선한 지혜와 행동의 근원이 하나님이심을 인정하는 신앙고백입니다. 다윗은 순간의 분노로 인해 무고한 피를 흘리고 스스로 복수하는 죄를 지을 뻔했으나, 아비가일의 중재를 통해 그 죄로부터 구원받았음을 깨닫습니다. 이 구절은 하나님께서 때로는 사람을 통해 우리의 잘못된 길을 막으시고, 그분의 선한 뜻으로 인도하시는 섭리를 보여줍니다. 성도는 자신의 감정보다 하나님의 말씀과 지혜로운 권면에 귀 기울여야 함을 교훈합니다.</p>
+
+            <h3>성경 본문 (Full Text)</h3>
+            <div class="bible-text">
                 <strong>사무엘의 죽음과 나발의 어리석음</strong>
-                <p><span class="verse-number">1</span>사무엘이 죽으매 온 이스라엘 무리가 모여 그를 두고 슬피 울며 라마 그의 집에서 그를 장사한지라 다윗이 일어나 바란 광야로 내려가니라</p>
-                <p><span class="verse-number">2</span>마온에 한 사람이 있는데 그의 생업이 갈멜에 있고 심히 부하여 양이 삼천 마리요 염소가 천 마리이므로 그가 갈멜에서 그의 양 털을 깎고 있었으니</p>
-                <p><span class="verse-number">3</span>그 사람의 이름은 나발이요 그의 아내의 이름은 아비가일이라 그 여자는 총명하고 용모가 아름다우나 남자는 완고하고 행실이 악하며 그는 갈렙 족속이었더라</p>
-                <p><span class="verse-number">4</span>다윗이 광야에서 나발이 자기 양 털을 깎는다 함을 들은지라</p>
-                <p><span class="verse-number">5</span>다윗이 이에 소년 열 명을 보내며 그 소년들에게 이르되 너희는 갈멜로 올라가 나발에게 이르러 내 이름으로 그에게 문안하고</p>
-                <p><span class="verse-number">6</span>이르기를 너는 평강하라 네 집도 평강하라 네 소유의 모든 것도 평강하라</p>
-                <p><span class="verse-number">7</span>네게 양 털 깎는 자들이 있다 함을 이제 내가 들었노라 네 목자들이 우리와 함께 있었으나 우리가 그들을 해하지 아니하였고 그들이 갈멜에 있는 동안에 그들의 것을 하나도 잃지 아니하였나니</p>
-                <p><span class="verse-number">8</span>네 소년들에게 물으면 그들이 네게 말하리라 그런즉 내 소년들이 네게 은혜를 얻게 하라 우리가 좋은 날에 왔은즉 네 손에 있는 대로 네 종들과 네 아들 다윗에게 주기를 원하노라 하더라 하라</p>
-                <p><span class="verse-number">9</span>다윗의 소년들이 가서 다윗의 이름으로 이 모든 말을 나발에게 말하기를 마치매</p>
-                <p><span class="verse-number">10</span>나발이 다윗의 사환들에게 대답하여 이르되 다윗은 누구며 이새의 아들은 누구냐 요즈음에 각기 주인에게서 억지로 떠나는 종이 많도다</p>
-                <p><span class="verse-number">11</span>내가 어찌 내 떡과 물과 내 양 털 깎는 자를 위하여 잡은 고기를 가져다가 어디서 왔는지도 알지 못하는 자들에게 주겠느냐 한지라</p>
-                <p><span class="verse-number">12</span>이에 다윗의 소년들이 돌아서서 자기 길로 행하여 돌아와 이 모든 말을 그에게 전하매</p>
-                <p><span class="verse-number">13</span>다윗이 자기 사람들에게 이르되 각기 칼을 차라 하니 각기 칼을 차매 다윗도 자기 칼을 차니 사백 명 가량은 데리고 올라가고 이백 명은 소유물 곁에 있게 하니라</p>
-                <strong>아비가일의 지혜로운 중재</strong>
-                <p><span class="verse-number">14</span>하인들 가운데 하나가 나발의 아내 아비가일에게 말하여 이르되 다윗이 우리 주인에게 문안하러 광야에서 전령들을 보냈거늘 주인이 그들을 모욕하였나이다</p>
-                <p><span class="verse-number">15</span>우리가 들에 있어 그들과 상종할 동안에 그 사람들이 우리를 매우 선대하였으므로 우리가 다치거나 잃은 것이 없었으니</p>
-                <p><span class="verse-number">16</span>우리가 양을 지키는 동안에 그들이 우리와 함께 있어 밤낮 우리에게 담이 되었음이라</p>
-                <p><span class="verse-number">17</span>그런즉 이제 당신은 어떻게 할지를 알아 생각하실지니 이는 다윗이 우리 주인과 주인의 온 집을 해하기로 결정하였음이니이다 주인은 불량한 사람이라 더불어 말할 수 없나이다 하는지라</p>
-                <p><span class="verse-number">18</span>아비가일이 급히 떡 이백 덩이와 포도주 두 가죽 부대와 잡아서 요리한 양 다섯 마리와 볶은 곡식 다섯 세아와 건포도 백 송이와 무화과 뭉치 이백 개를 가져다가 나귀들에게 싣고</p>
-                <p><span class="verse-number">19</span>소년들에게 이르되 나를 앞서 가라 나는 너희 뒤에 가리라 하고 그의 남편 나발에게는 말하지 아니하니라</p>
-                <p><span class="verse-number">20</span>아비가일이 나귀를 타고 산 호젓한 곳을 따라 내려가더니 다윗과 그의 사람들이 자기에게로 마주 내려오는 것을 만나니라</p>
-                <p><span class="verse-number">21</span>다윗이 이미 말하기를 내가 이 자의 소유물을 광야에서 지켜 그 모든 것을 하나도 손실이 없게 한 것이 진실로 허사라 그가 악으로 나의 선을 갚는도다</p>
-                <p><span class="verse-number">22</span>내가 그에게 속한 모든 남자 가운데 한 사람이라도 아침까지 남겨 두면 하나님은 다윗에게 벌을 내리시고 또 내리시기를 원하노라 하였더라</p>
-                <p><span class="verse-number">23</span>아비가일이 다윗을 보고 급히 나귀에서 내려 다윗 앞에 엎드려 그의 얼굴을 땅에 대니라</p>
-                <p><span class="verse-number">24</span>그가 다윗의 발에 엎드려 이르되 내 주여 원하건대 이 죄악을 나 곧 내게로 돌리시고 여종에게 주의 귀에 말하게 하시고 이 여종의 말을 들으소서</p>
-                <p><span class="verse-number">25</span>원하옵나니 내 주는 이 불량한 사람 나발을 마음에 두지 마옵소서 그의 이름이 그에게 적당하니 그의 이름이 나발이라 그는 미련한 자니이다 여종은 내 주께서 보내신 소년들을 보지 못하였나이다</p>
-                <p><span class="verse-number">26</span>내 주여 여호와께서 살아 계심을 두고 맹세하노니 내 주도 살아 계시거니와 내 주의 손으로 피를 흘려 친히 보복하시는 일을 여호와께서 막으셨으니 내 주의 원수들과 내 주를 해하려 하는 자들은 나발과 같이 되기를 원하나이다</p>
-                <p><span class="verse-number">27</span>여종이 내 주께 가져온 이 예물을 내 주를 따르는 이 소년들에게 주게 하시고</p>
-                <p><span class="verse-number">28</span>주의 여종의 허물을 용서하여 주옵소서 여호와께서 반드시 내 주를 위하여 든든한 집을 세우시리니 이는 내 주께서 여호와의 싸움을 싸우심이요 내 주의 일생에 내 주에게서 악한 일을 찾을 수 없음이니이다</p>
-                <p><span class="verse-number">29</span>사람이 일어나서 내 주를 쫓아 내 주의 생명을 찾을지라도 내 주의 생명은 내 주의 하나님 여호와와 함께 생명 싸개 속에 싸여 있을 것이요 내 주의 원수들의 생명은 물매로 던지듯 여호와께서 그것을 던지시리이다</p>
-                <p><span class="verse-number">30</span>여호와께서 내 주에 대하여 하신 말씀대로 모든 선을 내 주에게 행하사 내 주를 이스라엘의 지도자로 세우실 때에</p>
-                <p><span class="verse-number">31</span>내 주께서 무죄한 피를 흘리셨다든지 내 주께서 친히 보복하셨다든지 함으로 말미암아 슬퍼하실 것도 없고 내 주의 마음에 걸리는 것도 없으시리니 다만 여호와께서 내 주를 후대하실 때에 원하건대 내 주의 여종을 생각하소서 하니라</p>
-                <strong>다윗이 아비가일을 칭찬하다</strong>
-                <p><span class="verse-number">32</span>다윗이 아비가일에게 이르되 오늘 너를 보내어 나를 영접하게 하신 이스라엘의 하나님 여호와를 찬송할지로다</p>
-                <p><span class="verse-number">33</span>또 네 지혜를 칭찬할지며 또 네게 복이 있을지로다 오늘 내가 피를 흘릴 것과 친히 복수하는 것을 네가 막았느니라</p>
-                <p><span class="verse-number">34</span>나를 막아 너를 해하지 않게 하신 이스라엘의 하나님 여호와의 살아 계심을 두고 맹세하노니 네가 급히 와서 나를 영접하지 아니하였더면 밝는 아침에는 과연 나발에게 속한 남자는 하나도 남겨 두지 아니하였으리라 하니라</p>
-                <p><span class="verse-number">35</span>다윗이 그의 손에서 그가 가져온 것을 받고 그에게 이르되 네 집으로 평안히 올라가라 내가 네 말을 듣고 네 청을 허락하노라</p>
-                <strong>나발의 죽음과 다윗의 아내 아비가일</strong>
-                <p><span class="verse-number">36</span>아비가일이 나발에게로 돌아오니 그가 왕의 잔치와 같은 잔치를 그의 집에 베풀고 크게 취하여 마음에 기뻐하므로 아비가일이 밝는 아침까지는 아무 말도 하지 아니하다가</p>
-                <p><span class="verse-number">37</span>아침에 나발이 포도주에서 깬 후에 그의 아내가 그에게 이 일을 말하매 그가 낙담하여 몸이 돌과 같이 되었더니</p>
-                <p><span class="verse-number">38</span>한 열흘 후에 여호와께서 나발을 치시매 그가 죽으니라</p>
-                <p><span class="verse-number">39</span>나발이 죽었다 함을 다윗이 듣고 이르되 나발에게 당한 나의 모욕을 갚아 주사 종으로 악한 일을 하지 않게 하신 여호와를 찬송할지로다 여호와께서 나발의 악행을 그의 머리에 돌리셨도다 하니라 다윗이 아비가일을 자기 아내로 삼으려고 사람을 보내어 그에게 말하게 하매</p>
-                <p><span class="verse-number">40</span>다윗의 전령들이 갈멜에 가서 아비가일에게 이르러 그에게 말하여 이르되 다윗이 당신을 아내로 삼고자 하여 우리를 당신께 보내더이다 하니</p>
-                <p><span class="verse-number">41</span>아비가일이 일어나 몸을 굽혀 얼굴을 땅에 대고 이르되 내 주의 여종은 내 주의 전령들의 발 씻길 종이니이다 하고</p>
-                <p><span class="verse-number">42</span>아비가일이 급히 일어나 나귀를 타고 그를 뒤따르는 처녀 다섯과 함께 다윗의 전령들을 따라가서 다윗의 아내가 되니라</p>
-                <p><span class="verse-number">43</span>다윗이 또 이스르엘 아히노암을 아내로 맞았으므로 그들 두 사람이 그의 아내가 되니라</p>
-                <p><span class="verse-number">44</span>사울이 그의 딸 다윗의 아내 미갈을 갈림에 사는 라이스의 아들 발디에게 주었더라</p>
+                <p><span class="verse-number">1</span> 사무엘이 죽으매 온 이스라엘 무리가 모여 그를 두고 슬피 울며 라마 그의 집에서 그를 장사한지라 다윗이 일어나 바란 광야로 내려가니라</p>
+                <p><span class="verse-number">2</span> 마온에 한 사람이 있는데 그의 생업이 갈멜에 있고 심히 부하여 양이 삼천 마리요 염소가 천 마리이므로 그가 갈멜에서 그의 양 털을 깎고 있었으니</p>
+                <p><span class="verse-number">3</span> 그 사람의 이름은 나발이요 그의 아내의 이름은 아비가일이라 그 여자는 총명하고 용모가 아름다우나 남자는 완고하고 행실이 악하며 그는 갈렙 족속이었더라</p>
+                <p><span class="verse-number">4</span> 다윗이 광야에서 나발이 자기 양 털을 깎는다 함을 들은지라</p>
+                <p><span class="verse-number">5</span> 다윗이 이에 소년 열 명을 보내며 그 소년들에게 이르되 너희는 갈멜로 올라가 나발에게 이르러 내 이름으로 그에게 문안하고</p>
+                <p><span class="verse-number">6</span> 이같이 그 부하게 사는 자에게 이르기를 너는 평강하라 네 집도 평강하라 네 소유의 모든 것도 평강하라</p>
+                <p><span class="verse-number">7</span> 네게 양 털 깎는 자들이 있다 함을 이제 내가 들었노라 네 목자들이 우리와 함께 있었으나 우리가 그들을 해하지 아니하였고 그들이 갈멜에 있는 동안에 그들의 것을 하나도 잃지 아니하였나니</p>
+                <p><span class="verse-number">8</span> 네 소년들에게 물으면 그들이 네게 말하리라 그런즉 내 소년들이 네게 은혜를 얻게 하라 우리가 좋은 날에 왔은즉 네 손에 있는 대로 네 종들과 네 아들 다윗에게 주기를 원하노라 하더라 하라</p>
+                <p><span class="verse-number">9</span> 다윗의 소년들이 가서 다윗의 이름으로 이 모든 말을 나발에게 말하기를 마치매</p>
+                <p><span class="verse-number">10</span> 나발이 다윗의 사환들에게 대답하여 이르되 다윗은 누구며 이새의 아들은 누구냐 요즈음에 각기 주인에게서 억지로 떠나는 종이 많도다</p>
+                <p><span class="verse-number">11</span> 내가 어찌 내 떡과 물과 내 양 털 깎는 자를 위하여 잡은 고기를 가져다가 어디서 왔는지도 알지 못하는 자들에게 주겠느냐 한지라</p>
+                
+                <strong>분노하는 다윗과 지혜로운 아비가일</strong>
+                <p><span class="verse-number">12</span> 이에 다윗의 소년들이 돌아서서 자기 길로 행하여 돌아와 이 모든 말을 그에게 전하매</p>
+                <p><span class="verse-number">13</span> 다윗이 자기 사람들에게 이르되 각기 칼을 차라 하니 각기 칼을 차매 다윗도 자기 칼을 차니라 사백 명 가량은 데리고 올라가고 이백 명은 소유물 곁에 있게 하니라</p>
+                <p><span class="verse-number">14</span> 하인들 가운데 하나가 나발의 아내 아비가일에게 말하여 이르되 다윗이 우리 주인에게 문안하러 광야에서 전령들을 보냈거늘 주인이 그들을 모욕하였나이다</p>
+                <p><span class="verse-number">15</span> 우리가 들에 있어 그들과 상종할 동안에 그 사람들이 우리를 매우 선대하였으므로 우리가 다치거나 잃은 것이 없었으니</p>
+                <p><span class="verse-number">16</span> 우리가 양을 지키는 동안에 그들이 우리와 함께 있어 밤낮 우리에게 담이 되었음이라</p>
+                <p><span class="verse-number">17</span> 그런즉 이제 당신은 어떻게 할지를 알아 생각하실지니 이는 다윗이 우리 주인과 주인의 온 집을 해하기로 결정하였음이니이다 주인은 불량한 사람이라 더불어 말할 수 없나이다 하는지라</p>
+                <p><span class="verse-number">18</span> 아비가일이 급히 떡 이백 덩이와 포도주 두 가죽 부대와 잡아서 요리한 양 다섯 마리와 볶은 곡식 다섯 세아와 건포도 백 송이와 무화과 뭉치 이백 개를 가져다가 나귀들에게 싣고</p>
+                <p><span class="verse-number">19</span> 소년들에게 이르되 내 앞서 가라 나는 너희 뒤에 가리라 하고 그의 남편 나발에게는 말하지 아니하니라</p>
+                <p><span class="verse-number">20</span> 아비가일이 나귀를 타고 산 호젓한 곳을 따라 내려가더니 다윗과 그의 사람들이 자기에게로 마주 내려오는 것을 만나니라</p>
+                <p><span class="verse-number">21</span> 다윗이 이미 말하기를 내가 이 자의 소유물을 광야에서 지켜 그 모든 것을 하나도 손실이 없게 한 것이 진실로 허사라 그가 악으로 나의 선을 갚는도다</p>
+                <p><span class="verse-number">22</span> 내가 그에게 속한 모든 남자 가운데 한 사람이라도 아침까지 남겨 두면 하나님은 다윗에게 벌을 내리시고 또 내리시기를 원하노라 하였더라</p>
+                <p><span class="verse-number">23</span> 아비가일이 다윗을 보고 급히 나귀에서 내려 다윗 앞에 엎드려 그의 얼굴을 땅에 대니라</p>
+                <p><span class="verse-number">24</span> 그가 다윗의 발에 엎드려 이르되 내 주여 원하건대 이 죄악을 나 곧 내게로 돌리시고 여종에게 주의 귀에 말하게 하시고 이 여종의 말을 들으소서</p>
+                <p><span class="verse-number">25</span> 원하옵나니 내 주는 이 불량한 사람 나발을 마음에 두지 마옵소서 그의 이름이 그에게 적당하니 그의 이름이 나발이라 그는 미련한 자니이다 여종은 내 주께서 보내신 소년들을 보지 못하였나이다</p>
+                <p><span class="verse-number">26</span> 내 주여 여호와께서 살아 계심을 두고 맹세하노니 내 주도 살아 계시거니와 내 주의 손으로 피를 흘려 친히 보복하시는 일을 여호와께서 막으셨으니 내 주의 원수들과 내 주를 해하려 하는 자들은 나발과 같이 되기를 원하나이다</p>
+                <p><span class="verse-number">27</span> 여종이 내 주께 가져온 이 예물을 내 주를 따르는 이 소년들에게 주게 하시고</p>
+                <p><span class="verse-number">28</span> 주의 여종의 허물을 용서하여 주옵소서 여호와께서 반드시 내 주를 위하여 든든한 집을 세우시리니 이는 내 주께서 여호와의 싸움을 싸우심이요 내 주의 일생에 내 주에게서 악한 일을 찾을 수 없음이니이다</p>
+                <p><span class="verse-number">29</span> 사람이 일어나서 내 주를 쫓아 내 주의 생명을 찾을지라도 내 주의 생명은 내 주의 하나님 여호와와 함께 생명 싸개 속에 싸였을 것이요 내 주의 원수들의 생명은 물매로 던지듯 여호와께서 그것을 던지시리이다</p>
+                <p><span class="verse-number">30</span> 여호와께서 내 주에 대하여 하신 말씀대로 모든 선을 내 주에게 행하사 내 주를 이스라엘의 지도자로 세우실 때에</p>
+                <p><span class="verse-number">31</span> 내 주께서 무죄한 피를 흘리셨다든지 내 주께서 친히 보복하셨다든지 함으로 말미암아 슬퍼하실 것도 없고 내 주의 마음에 걸리는 것도 없으시리니 다만 여호와께서 내 주를 후대하실 때에 원하건대 내 주의 여종을 생각하소서 하니라</p>
+                
+                <strong>하나님의 심판과 다윗의 결정</strong>
+                <p><span class="verse-number">32</span> 다윗이 아비가일에게 이르되 오늘 너를 보내어 나를 영접하게 하신 이스라엘의 하나님 여호와를 찬송할지로다</p>
+                <p><span class="verse-number">33</span> 또 네 지혜를 칭찬할지며 또 네게 복이 있을지로다 오늘 내가 피를 흘릴 것과 친히 복수하는 것을 네가 막았느니라</p>
+                <p><span class="verse-number">34</span> 나를 막아 너를 해하지 않게 하신 이스라엘의 하나님 여호와의 살아 계심을 두고 맹세하노니 네가 급히 와서 나를 영접하지 아니하였더면 밝는 아침에는 과연 나발에게 속한 남자는 하나도 남겨 두지 아니하였으리라 하니라</p>
+                <p><span class="verse-number">35</span> 다윗이 그가 가져온 것을 그의 손에서 받고 그에게 이르되 네 집으로 평안히 올라가라 내가 네 말을 듣고 네 청을 허락하노라</p>
+                <p><span class="verse-number">36</span> 아비가일이 나발에게로 돌아오니 그가 왕의 잔치와 같은 잔치를 그의 집에 배설하고 크게 취하여 마음에 기뻐하므로 아비가일이 밝는 아침까지는 아무 말도 하지 아니하다가</p>
+                <p><span class="verse-number">37</span> 아침에 나발이 포도주에서 깬 후에 그의 아내가 그에게 이 일을 말하매 그가 낙담하여 몸이 돌과 같이 되었더니</p>
+                <p><span class="verse-number">38</span> 한 열흘 후에 여호와께서 나발을 치시매 그가 죽으니라</p>
+                <p><span class="verse-number">39</span> 나발이 죽었다 함을 다윗이 듣고 이르되 나발에게 당한 나의 모욕을 갚아 주사 종으로 악한 일을 하지 않게 하신 여호와를 찬송할지로다 여호와께서 나발의 악행을 그의 머리에 돌리셨도다 하니라 다윗이 아비가일을 자기 아내로 삼으려고 사람을 보내어 그에게 말하게 하매</p>
+                <p><span class="verse-number">40</span> 다윗의 전령들이 갈멜에 가서 아비가일에게 이르러 그에게 말하여 이르되 다윗이 당신을 아내로 삼고자 하여 우리를 당신께 보내더이다 하니</p>
+                <p><span class="verse-number">41</span> 아비가일이 일어나 몸을 굽혀 얼굴을 땅에 대고 이르되 내 주의 여종은 내 주의 전령들의 발 씻길 종이니이다 하고</p>
+                <p><span class="verse-number">42</span> 아비가일이 급히 일어나 나귀를 타고 그를 뒤따르는 처녀 다섯과 함께 다윗의 전령들을 따라가서 다윗의 아내가 되니라</p>
+                <p><span class="verse-number">43</span> 다윗이 또 이스르엘 아히노암을 아내로 맞았더니 그들 두 사람이 그의 아내가 되니라</p>
+                <p><span class="verse-number">44</span> 사울이 그의 딸 다윗의 아내 미갈을 갈림에 사는 라이스의 아들 발디에게 주었더라</p>
             </div>
         </div>
 
-        <!-- 고린도전서 6장 카드 -->
-        <div class="chapter-card corinthians-card">
-            <h2 style="border-color: var(--color-corinthians);">고린도전서 6장</h2>
-            <div class="section" style="border-color: var(--color-corinthians);">
-                <h3>개요 (Overview)</h3>
-                <p>고린도전서 6장에서 사도 바울은 고린도 교회의 두 가지 심각한 문제, 즉 성도 간의 분쟁을 세상 법정으로 가져가는 문제와 성적인 부도덕의 문제를 질책합니다. 바울은 교회가 세상의 판단 기준이 아닌, 하나님의 지혜로 내부 문제를 해결해야 함을 역설합니다. 더 나아가, 성도의 몸은 성령이 거하시는 전이며 그리스도의 지체임을 선포하며, 모든 성적 죄악을 피하고 몸으로 하나님께 영광 돌리는 거룩한 삶을 살 것을 강력하게 촉구합니다.</p>
-            </div>
+        <!-- Card 2: 고린도전서 6장 -->
+        <div class="chapter-card card-book2">
+            <h2>고린도전서 6장: 성도의 정체성과 거룩한 삶</h2>
+            <h3>개요 (Overview)</h3>
+            <p>고린도전서 6장은 교회 내부의 두 가지 심각한 문제, 즉 성도 간의 소송 문제와 성적인 부도덕 문제를 다룹니다. 바울은 성도들이 세상 법정에서 서로를 고소하는 것은 이미 패배한 것이라고 질책하며, 차라리 불의를 당하는 것이 낫다고 권면합니다. 이어서, 성도의 몸은 그리스도의 지체요 성령이 거하시는 전임을 상기시키며, 모든 종류의 음행을 피하고 몸으로 하나님께 영광을 돌려야 할 것을 강력하게 촉구합니다.</p>
 
-            <div class="section" style="border-color: var(--color-corinthians);">
-                <h3>시각적 분석 (Visual Analysis)</h3>
-                <div class="svg-container">
-                    <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-                        <style>.label{font-family:'Noto Sans KR',sans-serif;font-size:11px;fill:#333}.title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:bold;fill:var(--color-corinthians)}</style>
-                        <text x="200" y="25" text-anchor="middle" class="title" style="font-size:16px;">세상 방식 vs. 그리스도인의 정체성</text>
-                        <!-- 좌측: 세상 방식 -->
-                        <rect x="20" y="50" width="160" height="150" rx="10" fill="#f1f3f5"/>
-                        <text x="100" y="75" text-anchor="middle" class="title" style="fill:#c92a2a">문제: 세상의 방식</text>
-                        <text x="100" y="110" text-anchor="middle" class="label">세상 법정에 소송</text>
-                        <text x="100" y="150" text-anchor="middle" class="label">성적 부도덕 (음행)</text>
-                        <!-- 우측: 해결책 -->
-                        <rect x="220" y="50" width="160" height="150" rx="10" fill="#e3f2fd"/>
-                        <text x="300" y="75" text-anchor="middle" class="title">해결: 거룩한 정체성</text>
-                        <text x="300" y="110" text-anchor="middle" class="label">성도는 세상을 판단할 자</text>
-                        <text x="300" y="150" text-anchor="middle" class="label">몸은 성령의 전</text>
-                        <text x="300" y="170" text-anchor="middle" class="label" style="font-weight:bold;fill:var(--color-corinthians)">몸으로 하나님께 영광</text>
-                        <!-- 화살표 -->
-                        <path d="M 185 125 L 215 125" stroke="#333" stroke-width="2.5" fill="none" marker-end="url(#arrow-black)"/>
-                        <text x="200" y="118" text-anchor="middle" class="label" style="font-size:9px;">바울의</text>
-                        <text x="200" y="132" text-anchor="middle" class="label" style="font-size:9px;">권면</text>
-                        <defs><marker id="arrow-black" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/></marker></defs>
-                    </svg>
-                </div>
-            </div>
+            <h3>시각적 분석 (Visual Analysis)</h3>
+            <svg class="svg-diagram" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .svg-text { font-family: var(--font-main); font-size: 10px; fill: #333; }
+                        .svg-text-white { font-family: var(--font-main); font-size: 10px; fill: #fff; paint-order: stroke; stroke: #000; stroke-width: 0.3px; }
+                    </style>
+                </defs>
+                <text x="200" y="20" text-anchor="middle" style="font-size: 14px; font-weight: bold; font-family: var(--font-serif);">성도의 삶의 원리</text>
 
-            <div class="section" style="border-color: var(--color-corinthians);">
-                <h3>배경지식 및 신학적 통찰 (Context & Theology)</h3>
-                <p>고린도는 성적으로 타락하고 소송이 만연한 항구 도시였습니다. 이러한 세속적 가치관이 교회에 깊이 침투한 것입니다. 개혁주의 신학은 <strong>'세상과의 구별'</strong>을 신자의 중요한 정체성으로 봅니다. 바울은 성도들이 장차 세상을 심판할 존귀한 존재임을 상기시키며, 세상의 방식으로 문제를 해결하는 것이 신분의 자기모순임을 지적합니다. 특히 바울의 <strong>'몸의 신학'</strong>은 중요합니다. 우리의 몸은 영혼의 껍데기가 아니라, 그리스도의 피로 값 주고 사신 바 된 성령 하나님의 거룩한 전(殿)입니다. 따라서 몸으로 짓는 죄, 특히 성적인 죄는 그리스도와의 연합을 더럽히고 하나님의 성전을 파괴하는 심각한 신성모독입니다. 이는 구원이 방종의 면허가 아니라, 오히려 전인격적인 거룩함으로의 부르심임을 명확히 합니다.</p>
-            </div>
+                <rect x="20" y="40" width="160" height="30" rx="5" fill="#f2f5f8" stroke="#ccc"/>
+                <text x="100" y="60" text-anchor="middle" class="svg-text">세상적 방식 (옛 사람)</text>
+                <rect x="220" y="40" width="160" height="30" rx="5" fill="#f2f5f8" stroke="#ccc"/>
+                <text x="300" y="60" text-anchor="middle" class="svg-text">하나님 나라의 방식 (새 사람)</text>
 
-            <div class="section" style="border-color: var(--color-corinthians);">
-                <h3>주요 구절 해설 (Key Verse Commentary)</h3>
-                <div class="key-verse">
-                    <p><strong>고린도전서 6:11</strong><br>"너희 중에 이와 같은 자들이 있더니 주 예수 그리스도의 이름과 우리 하나님의 성령 안에서 씻음과 거룩함과 의롭다 하심을 받았느니라"</p>
-                    <p><strong>해설:</strong> 이 구절은 복음의 변혁적인 능력을 응축하여 보여줍니다. '...있더니'라는 과거형은 죄악된 과거와의 완전한 단절을 선언합니다. 복음은 우리의 정체성을 근본적으로 바꿉니다. '씻음(중생)', '거룩함(성화)', '의롭다 하심(칭의)'이라는 구원의 서정의 핵심 요소들이 삼위일체 하나님의 사역 안에서 단번에, 그리고 영원히 주어졌음을 선포합니다. 매튜 헨리는 "복음은 가장 큰 죄인들을 정결케 하고, 아름답게 하며, 의롭게 할 수 있는 능력을 지닌다"고 말했습니다. 이 구절은 우리의 구원이 전적인 하나님의 은혜이며, 그 은혜는 우리를 죄의 자리에서 거룩의 자리로 옮기는 실제적인 능력임을 증거합니다.</p>
-                </div>
-                <div class="key-verse">
-                    <p><strong>고린도전서 6:19-20</strong><br>"너희 몸은... 너희 자신의 것이 아니라 값으로 산 것이 되었으니 그런즉 너희 몸으로 하나님께 영광을 돌리라"</p>
-                    <p><strong>해설:</strong> 이 구절은 기독교 윤리의 대헌장입니다. 우리의 몸에 대한 소유권이 우리에게 있지 않고, 그리스도의 보혈이라는 '값'을 치르신 하나님께 있음을 선언합니다. 따라서 우리의 몸은 사적인 욕망의 도구가 아니라, 하나님이 거하시는 공적인 성전입니다. 이 진리는 '내 몸은 내 것'이라는 세상의 가치관을 정면으로 반박하며, 우리의 모든 육체적 활동의 목적이 '하나님의 영광'이 되어야 함을 명확히 합니다. 칼빈은 "우리는 우리 자신의 주인이 아니므로, 우리의 모든 지체를 거룩한 제물로 드려 하나님의 영광을 위해 사용하는 것이 마땅하다"고 강조했습니다. 이는 성도의 삶의 모든 영역이 하나님의 주권 아래 있음을 상기시키는 강력한 선언입니다.</p>
-                </div>
-            </div>
+                <rect x="20" y="80" width="160" height="30" rx="5" fill="#DB4437"/>
+                <text x="100" y="100" text-anchor="middle" class="svg-text-white">세상 법정에서의 소송</text>
+                <rect x="220" y="80" width="160" height="30" rx="5" fill="#0F9D58"/>
+                <text x="300" y="100" text-anchor="middle" class="svg-text-white">차라리 불의를 당함</text>
 
-            <div class="section full-text" style="border-color: var(--color-corinthians);">
-                <h3>성경 본문 (Full Text)</h3>
+                <rect x="20" y="120" width="160" height="30" rx="5" fill="#DB4437"/>
+                <text x="100" y="140" text-anchor="middle" class="svg-text-white">성적 부도덕 (음행)</text>
+                <rect x="220" y="120" width="160" height="30" rx="5" fill="#0F9D58"/>
+                <text x="300" y="140" text-anchor="middle" class="svg-text-white">몸으로 하나님께 영광</text>
+
+                <path d="M 190 95 L 210 95" stroke="#555" stroke-width="1.5" marker-end="url(#arrow-head)" />
+                <path d="M 190 135 L 210 135" stroke="#555" stroke-width="1.5" marker-end="url(#arrow-head)" />
+            </svg>
+
+            <h3>배경지식 및 신학적 통찰 (Context & Theology)</h3>
+            <p>고린도 교회는 은사가 풍성했지만, 그에 걸맞은 성숙한 신앙 인격을 갖추지 못해 여러 문제를 겪고 있었습니다. 성도 간의 재산 다툼을 세상 법정으로 가져가는 것은, 교회가 그리스도 안에서 한 몸이라는 정체성을 망각하고 세상의 가치관을 따르는 행위였습니다. 바울은 장차 세상을 심판할 성도들이 지극히 작은 일도 스스로 판단하지 못하느냐고 책망합니다. 이는 교회의 거룩성과 자치권을 강조하는 것입니다. 또한, 당시 고린도는 성적으로 매우 문란한 항구 도시였는데, 이러한 문화가 교회 안까지 침투했습니다. 바울은 '몸은 성령의 전'이라는 혁명적인 선언을 통해, 성도의 몸이 단순한 육체가 아니라 하나님께서 값 주고 사신 거룩한 소유임을 밝힙니다. 이는 성화(Sanctification)의 교리가 우리의 구체적인 삶과 몸에 어떻게 적용되는지를 보여주는 중요한 가르침입니다.</p>
+
+            <h3>주요 구절 해설 (Key Verse Commentary)</h3>
+            <p><strong>고린도전서 6:19-20</strong> "너희 몸은 너희가 하나님께로부터 받은 바 너희 가운데 계신 성령의 전인 줄을 알지 못하느냐 너희는 너희 자신의 것이 아니라 값으로 산 것이 되었으니 그런즉 너희 몸으로 하나님께 영광을 돌리라"</p>
+            <p>이 구절은 기독교 윤리의 핵심을 담고 있습니다. 우리의 몸은 더 이상 죄의 도구가 아니며, 우리 자신의 소유물도 아닙니다. 그리스도의 피라는 엄청난 '값'으로 치러진, 하나님의 소유입니다. 더 나아가, 삼위일체 하나님이신 성령께서 거하시는 성전입니다. 구약 시대에 성전이 하나님의 임재와 영광의 장소였듯, 신약 시대의 성도 한 사람 한 사람이 바로 '걸어 다니는 성전'입니다. 이 놀라운 정체성은 우리의 삶의 방식을 완전히 바꾸어 놓습니다. 우리가 몸으로 행하는 모든 일, 즉 먹고 마시고 일하고 관계 맺는 모든 순간이 하나님께 영광을 돌리는 예배가 되어야 합니다. 특히 성적인 순결은 성령의 전인 몸을 더럽히지 않는 최소한의 의무이자, 우리를 값 주고 사신 주님에 대한 마땅한 충성입니다.</p>
+
+            <h3>성경 본문 (Full Text)</h3>
+            <div class="bible-text">
                 <strong>성도 간의 소송 문제</strong>
-                <p><span class="verse-number">1</span>너희 중에 누가 다른 이와 더불어 다툼이 있는데 구태여 불의한 자들 앞에서 고발하고 성도 앞에서 하지 아니하느냐</p>
-                <p><span class="verse-number">2</span>성도가 세상을 판단할 것을 너희가 알지 못하느냐 세상도 너희에게 판단을 받겠거든 지극히 작은 일 판단하기를 감당하지 못하겠느냐</p>
-                <p><span class="verse-number">3</span>우리가 천사를 판단할 것을 너희가 알지 못하느냐 그러하거든 하물며 세상 일이랴</p>
-                <p><span class="verse-number">4</span>그런즉 너희가 세상 사건이 있을 때에 교회에서 경히 여김을 받는 자들을 세우느냐</p>
-                <p><span class="verse-number">5</span>내가 너희를 부끄럽게 하려 하여 이 말을 하노니 너희 가운데 그 형제간의 일을 판단할 만한 지혜 있는 자가 이같이 하나도 없느냐</p>
-                <p><span class="verse-number">6</span>형제가 형제와 더불어 고발할 뿐더러 믿지 아니하는 자들 앞에서 하느냐</p>
-                <p><span class="verse-number">7</span>너희가 피차 고발함으로 너희 가운데 이미 뚜렷한 허물이 있나니 차라리 불의를 당하는 것이 낫지 아니하며 차라리 속는 것이 낫지 아니하냐</p>
-                <p><span class="verse-number">8</span>너희는 불의를 행하고 속이는구나 그는 너희 형제로다</p>
-                <p><span class="verse-number">9</span>불의한 자가 하나님의 나라를 유업으로 받지 못할 줄을 알지 못하느냐 미혹을 받지 말라 음행하는 자나 우상 숭배하는 자나 간음하는 자나 탐색하는 자나 남색하는 자나</p>
-                <p><span class="verse-number">10</span>도적이나 탐욕을 부리는 자나 술 취하는 자나 모욕하는 자나 속여 빼앗는 자들은 하나님의 나라를 유업으로 받지 못하리라</p>
-                <p><span class="verse-number">11</span>너희 중에 이와 같은 자들이 있더니 주 예수 그리스도의 이름과 우리 하나님의 성령 안에서 씻음과 거룩함과 의롭다 하심을 받았느니라</p>
+                <p><span class="verse-number">1</span> 너희 중에 누가 다른 이와 더불어 다툼이 있는데 구태여 불의한 자들 앞에서 고발하고 성도 앞에서 하지 아니하느냐</p>
+                <p><span class="verse-number">2</span> 성도가 세상을 판단할 것을 너희가 알지 못하느냐 세상도 너희에게 판단을 받겠거든 지극히 작은 일 판단하기를 감당하지 못하겠느냐</p>
+                <p><span class="verse-number">3</span> 우리가 천사를 판단할 것을 너희가 알지 못하느냐 그러하거든 하물며 세상 일이랴</p>
+                <p><span class="verse-number">4</span> 그런즉 너희가 세상 사건이 있을 때에 교회에서 경히 여김을 받는 자들을 세우느냐</p>
+                <p><span class="verse-number">5</span> 내가 너희를 부끄럽게 하려 하여 이 말을 하노니 너희 가운데 그 형제간의 일을 판단할 만한 지혜 있는 자가 이같이 하나도 없느냐</p>
+                <p><span class="verse-number">6</span> 형제가 형제와 더불어 고발할 뿐더러 믿지 아니하는 자들 앞에서 하느냐</p>
+                <p><span class="verse-number">7</span> 너희가 피차 고발함으로 너희 가운데 이미 뚜렷한 허물이 있나니 차라리 불의를 당하는 것이 낫지 아니하며 차라리 속는 것이 낫지 아니하냐</p>
+                <p><span class="verse-number">8</span> 너희는 불의를 행하고 속이는구나 그는 너희 형제로다</p>
+                <p><span class="verse-number">9</span> 불의한 자가 하나님의 나라를 유업으로 받지 못할 줄을 알지 못하느냐 미혹을 받지 말라 음행하는 자나 우상 숭배하는 자나 간음하는 자나 탐색하는 자나 남색하는 자나</p>
+                <p><span class="verse-number">10</span> 도적이나 탐욕을 부리는 자나 술 취하는 자나 모욕하는 자나 속여 빼앗는 자들은 하나님의 나라를 유업으로 받지 못하리라</p>
+                <p><span class="verse-number">11</span> 너희 중에 이와 같은 자들이 있더니 주 예수 그리스도의 이름과 우리 하나님의 성령 안에서 씻음과 거룩함과 의롭다 하심을 받았느니라</p>
+                
                 <strong>몸으로 하나님께 영광을 돌리라</strong>
-                <p><span class="verse-number">12</span>모든 것이 내게 가하나 다 유익한 것이 아니요 모든 것이 내게 가하나 내가 무엇에든지 얽매이지 아니하리라</p>
-                <p><span class="verse-number">13</span>음식은 배를 위하여 있고 배는 음식을 위하여 있으나 하나님은 이것 저것을 다 폐하시리라 몸은 음란을 위하여 있지 않고 오직 주를 위하여 있으며 주는 몸을 위하여 계시느니라</p>
-                <p><span class="verse-number">14</span>하나님이 주를 다시 살리셨고 또한 그의 권능으로 우리를 다시 살리시리라</p>
-                <p><span class="verse-number">15</span>너희 몸이 그리스도의 지체인 줄을 알지 못하느냐 내가 그리스도의 지체를 가지고 창녀의 지체를 만들겠느냐 결코 그럴 수 없느니라</p>
-                <p><span class="verse-number">16</span>창녀와 합하는 자는 그와 한 몸인 줄을 알지 못하느냐 일렀으되 둘이 한 육체가 된다 하셨나니</p>
-                <p><span class="verse-number">17</span>주와 합하는 자는 한 영이니라</p>
-                <p><span class="verse-number">18</span>음행을 피하라 사람이 범하는 죄마다 몸 밖에 있거니와 음행하는 자는 자기 몸에 죄를 범하느니라</p>
-                <p><span class="verse-number">19</span>너희 몸은 너희가 하나님께로부터 받은 바 너희 가운데 계신 성령의 전인 줄을 알지 못하느냐 너희는 너희 자신의 것이 아니라</p>
-                <p><span class="verse-number">20</span>값으로 산 것이 되었으니 그런즉 너희 몸으로 하나님께 영광을 돌리라</p>
+                <p><span class="verse-number">12</span> 모든 것이 내게 가하나 다 유익한 것이 아니요 모든 것이 내게 가하나 내가 무엇에든지 얽매이지 아니하리라</p>
+                <p><span class="verse-number">13</span> 음식은 배를 위하여 있고 배는 음식을 위하여 있으나 하나님은 이것저것을 다 폐하시리라 몸은 음란을 위하여 있지 않고 오직 주를 위하여 있으며 주는 몸을 위하여 계시느니라</p>
+                <p><span class="verse-number">14</span> 하나님이 주를 다시 살리셨고 또한 그의 권능으로 우리를 다시 살리시리라</p>
+                <p><span class="verse-number">15</span> 너희 몸이 그리스도의 지체인 줄을 알지 못하느냐 내가 그리스도의 지체를 가지고 창녀의 지체를 만들겠느냐 결코 그럴 수 없느니라</p>
+                <p><span class="verse-number">16</span> 창녀와 합하는 자는 그와 한 몸인 줄을 알지 못하느냐 일렀으되 둘이 한 육체가 된다 하셨나니</p>
+                <p><span class="verse-number">17</span> 주와 합하는 자는 한 영이니라</p>
+                <p><span class="verse-number">18</span> 음행을 피하라 사람이 범하는 죄마다 몸 밖에 있거니와 음행하는 자는 자기 몸에 죄를 범하느니라</p>
+                <p><span class="verse-number">19</span> 너희 몸은 너희가 하나님께로부터 받은 바 너희 가운데 계신 성령의 전인 줄을 알지 못하느냐 너희는 너희 자신의 것이 아니라</p>
+                <p><span class="verse-number">20</span> 값으로 산 것이 되었으니 그런즉 너희 몸으로 하나님께 영광을 돌리라</p>
             </div>
         </div>
 
-        <!-- 에스겔 4장 카드 -->
-        <div class="chapter-card ezekiel-card">
-            <h2 style="border-color: var(--color-ezekiel);">에스겔 4장</h2>
-            <div class="section" style="border-color: var(--color-ezekiel);">
-                <h3>개요 (Overview)</h3>
-                <p>에스겔 4장은 선지자 에스겔이 하나님의 명령에 따라 수행하는 일련의 충격적이고 고통스러운 상징적 행위를 통해, 임박한 예루살렘의 멸망과 포로 생활의 참상을 예언하는 장입니다. 토판에 예루살렘 포위 공격을 모의하고, 오랜 기간 한쪽으로 누워 백성의 죄악을 짊어지며, 부정한 떡을 먹는 행위들은 하나님의 심판의 확실성과 죄의 무게를 백성들의 눈앞에 생생하게 보여주는 살아있는 설교입니다.</p>
-            </div>
+        <!-- Card 3: 에스겔 4장 -->
+        <div class="chapter-card card-book3">
+            <h2>에스겔 4장: 임박한 심판의 상징적 예언</h2>
+            <h3>개요 (Overview)</h3>
+            <p>에스겔 4장에서 선지자는 하나님의 명령에 따라 일련의 충격적인 상징 행동을 통해 예루살렘의 멸망을 예언합니다. 그는 토판에 예루살렘 성을 그리고 포위하는 장면을 연출하며, 왼쪽과 오른쪽으로 각각 이스라엘과 유다의 죄악의 햇수만큼 누워 지냅니다. 또한, 부정한 떡을 정해진 양만큼만 먹음으로써, 장차 예루살렘이 겪게 될 극심한 기근과 고통을 몸소 보여줍니다.</p>
 
-            <div class="section" style="border-color: var(--color-ezekiel);">
-                <h3>시각적 분석 (Visual Analysis)</h3>
-                <div class="svg-container">
-                    <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-                        <style>.label{font-family:'Noto Sans KR',sans-serif;font-size:11px;fill:#333}.title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:bold;fill:var(--color-ezekiel)}</style>
-                        <text x="200" y="25" text-anchor="middle" class="title" style="font-size:16px;">선지자의 상징적 행위: 심판의 예고</text>
-                        <!-- 에스겔 -->
-                        <g transform="translate(200, 150)">
-                            <path d="M -80 0 Q 0 -50 80 0" stroke="#8d6e63" fill="none" stroke-width="3"/>
-                            <circle cx="0" cy="-60" r="15" fill="#fff3e0"/>
-                            <text x="0" y="20" text-anchor="middle" class="title">에스겔</text>
-                        </g>
-                        <!-- 행위 1 -->
-                        <rect x="30" y="60" width="100" height="60" rx="5" fill="#efebe9" stroke="#a1887f" stroke-width="1.5"/>
-                        <text x="80" y="85" text-anchor="middle" class="label">1. 예루살렘 포위</text>
-                        <text x="80" y="100" text-anchor="middle" class="label" style="font-size:9px;">(토판과 철판)</text>
-                        <!-- 행위 2 -->
-                        <text x="200" y="70" text-anchor="middle" class="label">2. 죄악 담당</text>
-                        <text x="200" y="85" text-anchor="middle" class="label" style="font-size:9px;">(좌 390일, 우 40일 눕기)</text>
-                        <!-- 행위 3 -->
-                        <circle cx="320" cy="90" r="30" fill="#d7ccc8" stroke="#795548" stroke-width="1.5"/>
-                        <text x="320" y="85" text-anchor="middle" class="label">3. 부정한 떡</text>
-                        <text x="320" y="100" text-anchor="middle" class="label" style="font-size:9px;">(포로 생활의 고통)</text>
-                    </svg>
-                </div>
-            </div>
+            <h3>시각적 분석 (Visual Analysis)</h3>
+            <svg class="svg-diagram" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .svg-text { font-family: var(--font-main); font-size: 10px; fill: #333; }
+                        .svg-text-white { font-family: var(--font-main); font-size: 10px; fill: #fff; paint-order: stroke; stroke: #000; stroke-width: 0.3px; }
+                    </style>
+                </defs>
+                <text x="200" y="20" text-anchor="middle" style="font-size: 14px; font-weight: bold; font-family: var(--font-serif);">에스겔의 상징 행동</text>
+                
+                <!-- Step 1 -->
+                <rect x="10" y="40" width="100" height="40" rx="5" fill="#f2f5f8" stroke="#ccc"/>
+                <text x="60" y="65" text-anchor="middle" class="svg-text">예루살렘 포위 모형</text>
+                
+                <path d="M 115 60 L 145 60" stroke="#555" stroke-width="2" marker-end="url(#arrow-head)"/>
+                
+                <!-- Step 2 -->
+                <g>
+                    <rect x="150" y="40" width="100" height="40" rx="5" fill="#F4B400"/>
+                    <text x="200" y="58" text-anchor="middle" class="svg-text-white">왼쪽으로 눕기</text>
+                    <text x="200" y="72" text-anchor="middle" class="svg-text-white">(이스라엘 죄 담당)</text>
+                </g>
+                
+                <path d="M 255 60 L 285 60" stroke="#555" stroke-width="2" marker-end="url(#arrow-head)"/>
 
-            <div class="section" style="border-color: var(--color-ezekiel);">
-                <h3>배경지식 및 신학적 통찰 (Context & Theology)</h3>
-                <p>에스겔은 바벨론 포로 공동체 안에서 활동했습니다. 당시 많은 이들이 곧 예루살렘으로 귀환할 것이라는 거짓된 희망에 빠져 있었습니다. 에스겔의 기이한 행위는 이러한 헛된 낙관론을 깨부수고, 죄로 인한 하나님의 심판이 얼마나 철저하고 피할 수 없는 것인지를 각인시키기 위한 충격 요법이었습니다. 신학적으로 에스겔의 행위는 <strong>'대리 고난'의 모티브</strong>를 강력하게 보여줍니다. 그는 자신의 몸으로 이스라엘과 유다의 죄악을 '담당'하고 그 고통을 체현합니다. 이는 죄의 짐이 얼마나 무거운지를 보여주는 동시에, 장차 온 인류의 죄를 자신의 몸에 친히 짊어지실 <strong>예수 그리스도의 대속 사역을 예표</strong>하는 중요한 그림자입니다. 하나님의 말씀은 단순한 구두 선포를 넘어, 선지자의 온 삶을 통해 살아내야 하는 것임을 보여줍니다.</p>
-            </div>
+                <!-- Step 3 -->
+                <g>
+                    <rect x="290" y="40" width="100" height="40" rx="5" fill="#F4B400"/>
+                    <text x="340" y="58" text-anchor="middle" class="svg-text-white">오른쪽으로 눕기</text>
+                    <text x="340" y="72" text-anchor="middle" class="svg-text-white">(유다 죄 담당)</text>
+                </g>
+                
+                <path d="M 200 85 L 200 105" stroke="#555" stroke-width="2" marker-end="url(#arrow-head)"/>
+                
+                <!-- Step 4 -->
+                <rect x="100" y="110" width="200" height="30" rx="5" fill="#f2f5f8" stroke="#ccc"/>
+                <text x="200" y="130" text-anchor="middle" class="svg-text">부정한 떡을 정량대로 먹음 (기근 예고)</text>
+            </svg>
 
-            <div class="section" style="border-color: var(--color-ezekiel);">
-                <h3>주요 구절 해설 (Key Verse Commentary)</h3>
-                <div class="key-verse">
-                    <p><strong>에스겔 4:4-5</strong><br>"너는 또 왼쪽으로 누워 이스라엘 족속의 죄악을 짊어지되 네가 눕는 날수대로 그 죄악을 담당할지니라... 내가 그들의 범죄한 햇수대로 네게 날수를 정하였나니..."</p>
-                    <p><strong>해설:</strong> '죄악을 짊어지다', '담당하다'는 표현은 법적 책임을 지고 그 결과를 감당한다는 의미입니다. 에스겔은 하나님의 백성이 지은 수백 년의 죄악을 압축하여 자신의 몸으로 상징적인 형벌을 받으라는 명령을 받습니다. 매튜 헨리는 "선지자는 백성들이 죄의 무게를 느끼지 못했기 때문에, 그 무게가 얼마나 무거운지를 자신의 고통을 통해 보여주어야 했다"고 설명합니다. 이는 하나님의 공의가 죄를 결코 간과하지 않으시며, 죄에 대한 심판의 무게가 얼마나 큰지를 보여주는 행위입니다. 동시에 백성의 죄를 대신 짊어지는 선지자의 고통을 통해 그들을 향한 하나님의 아픈 마음을 전달합니다.</p>
-                </div>
-                 <div class="key-verse">
-                    <p><strong>에스겔 4:13</strong><br>"...내가 여러 나라들로 쫓아내어 흩어 버릴 이스라엘 자손이 그곳에서 이와 같이 부정한 떡을 먹으리라..."</p>
-                    <p><strong>해설:</strong> 인분(나중에 쇠똥으로 완화됨)으로 불을 피워 떡을 굽는 행위는 율법적으로 심각한 부정함입니다. 이는 포로 생활의 영적인 의미를 상징합니다. 언약을 파기한 이스라엘은 더 이상 거룩한 백성이 아니며, 이방 땅에서 이방인처럼 '부정한' 존재가 되어 '부정한' 음식을 먹게 될 것임을 의미합니다. 이는 단순한 물리적 고난을 넘어, 하나님과의 관계가 단절된 언약적 저주의 상태를 보여주는 끔찍한 상징입니다. 칼빈은 "이것은 그들이 하나님의 특별한 보호와 은총에서 벗어나, 이방의 더러움에 내던져질 것임을 보여준다"고 주해했습니다. 거룩함을 상실한 백성의 비참한 운명을 드러냅니다.</p>
-                </div>
-            </div>
+            <h3>배경지식 및 신학적 통찰 (Context & Theology)</h3>
+            <p>에스겔은 바벨론에 포로로 잡혀간 상태에서 이 예언을 행했습니다. 당시 예루살렘에 남아 있던 유다 백성들은 거짓 선지자들의 말에 속아 곧 회복될 것이라는 헛된 희망에 빠져 있었습니다. 하나님은 에스겔의 기이한 행동을 통해, 심판이 피할 수 없는 현실임을 시각적으로 강력하게 선포하십니다. 선지자가 백성의 죄를 짊어지고 고통을 감수하는 모습은, 장차 온 인류의 죄를 대신 짊어지실 예수 그리스도의 대속 사역을 예표합니다. 에스겔이 겪는 고통은 하나님의 백성을 향한 사랑과 공의가 얼마나 치열한지를 보여줍니다. 하나님은 죄를 결코 가볍게 여기지 않으시며, 심판을 통해 당신의 거룩함을 드러내십니다.</p>
 
-            <div class="section full-text" style="border-color: var(--color-ezekiel);">
-                <h3>성경 본문 (Full Text)</h3>
+            <h3>주요 구절 해설 (Key Verse Commentary)</h3>
+            <p><strong>에스겔 4:5-6</strong> "내가 그들의 범죄한 햇수대로 네게 날수를 정하였나니 곧 삼백구십 일이니라 너는 이렇게 이스라엘 족속의 죄악을 담당하고 그 수가 차거든 너는 오른쪽으로 누워 유다 족속의 죄악을 담당하라 내가 네게 사십 일로 정하였나니 하루가 일 년이니라"</p>
+            <p>이 구절은 에스겔의 상징적 행위의 의미를 설명합니다. 그가 누워있는 날수는 이스라엘과 유다 족속이 범죄한 기간을 상징합니다. '죄악을 담당한다'는 표현은 법적인 책임을 진다는 의미로, 에스겔이 백성들의 죄를 대신 짊어지는 역할을 수행하고 있음을 보여줍니다. 이는 단순한 연극이 아니라, 백성들의 죄의 무게가 얼마나 무거운지를 실감하게 하는 예언적 행위입니다. 하루를 일 년으로 계산하는 방식은 예언 문학에서 상징적으로 사용되며, 하나님의 심판이 정해진 때에 반드시 이루어질 것임을 강조합니다. 이 고통스러운 순종을 통해 에스겔은 하나님의 말씀을 살아내는 선지자의 모습을 보여줍니다.</p>
+
+            <h3>성경 본문 (Full Text)</h3>
+            <div class="bible-text">
                 <strong>예루살렘 포위의 상징</strong>
-                <p><span class="verse-number">1</span>너 인자야 토판을 가져다가 그것을 네 앞에 놓고 한 성읍 곧 예루살렘을 그 위에 그리고</p>
-                <p><span class="verse-number">2</span>그 성읍을 에워싸되 그것을 향하여 사다리를 세우고 그것을 향하여 흙으로 언덕을 쌓고 그것을 향하여 진을 치고 그것을 향하여 공성퇴를 둘러 세우고</p>
-                <p><span class="verse-number">3</span>또 철판을 가져다가 너와 성읍 사이에 두어 철벽을 삼고 성을 포위하는 것처럼 에워싸라 이것이 이스라엘 족속에게 징조가 되리라</p>
-                <p><span class="verse-number">4</span>너는 또 왼쪽으로 누워 이스라엘 족속의 죄악을 짊어지되 네가 눕는 날수대로 그 죄악을 담당할지니라</p>
-                <p><span class="verse-number">5</span>내가 그들의 범죄한 햇수대로 네게 날수를 정하였나니 곧 삼백구십 일이니라 너는 이렇게 이스라엘 족속의 죄악을 담당하고</p>
-                <p><span class="verse-number">6</span>그 수가 차거든 너는 오른쪽으로 누워 유다 족속의 죄악을 담당하라 내가 네게 사십 일로 정하였나니 하루가 일 년이니라</p>
-                <p><span class="verse-number">7</span>너는 또 네 얼굴을 에워싸인 예루살렘 쪽으로 향하고 팔을 걷어 올리고 예언하라</p>
-                <p><span class="verse-number">8</span>내가 줄로 너를 동이리니 네가 에워싸는 날이 끝나기까지 몸을 이리 저리 돌리지 못하리라</p>
-                <strong>포위 공격 때의 식량난</strong>
-                <p><span class="verse-number">9</span>너는 밀과 보리와 콩과 팥과 조와 귀리를 가져다가 한 그릇에 담고 너를 위하여 떡을 만들어 네가 옆으로 눕는 날수 곧 삼백구십 일 동안 먹되</p>
-                <p><span class="verse-number">10</span>너는 음식을 저울에 달아 하루 이십 세겔씩 때를 따라 먹고</p>
-                <p><span class="verse-number">11</span>물도 힌 육분의 일씩 되어서 때를 따라 마시라</p>
-                <p><span class="verse-number">12</span>너는 그것을 보리떡처럼 만들어 먹되 그들의 목전에서 인분 불을 피워 구울지니라</p>
-                <p><span class="verse-number">13</span>또 여호와께서 이르시되 내가 여러 나라들로 쫓아내어 흩어 버릴 이스라엘 자손이 그곳에서 이와 같이 부정한 떡을 먹으리라 하시기로</p>
-                <p><span class="verse-number">14</span>내가 말하되 아하 주 여호와여 나는 영혼을 더럽힌 일이 없었나이다 어려서부터 지금까지 스스로 죽은 것이나 짐승에게 찢긴 것을 먹지 아니하였고 가증한 고기를 입에 넣지 아니하였나이다</p>
-                <p><span class="verse-number">15</span>여호와께서 내게 이르시되 보라 쇠똥으로 인분을 대신하기를 허락하노니 너는 그것으로 떡을 구울지니라</p>
-                <p><span class="verse-number">16</span>또 내게 이르시되 인자야 내가 예루살렘에서 의뢰하는 양식을 끊으리니 백성이 근심 중에 떡을 달아 먹고 두려워 떨며 물을 되어 마시다가</p>
-                <p><span class="verse-number">17</span>떡과 물이 부족하여 피차에 두려워하며 그 죄악 중에서 쇠패하리라</p>
+                <p><span class="verse-number">1</span> 너 인자야 토판을 가져다가 그것을 네 앞에 놓고 한 성읍 곧 예루살렘을 그 위에 그리고</p>
+                <p><span class="verse-number">2</span> 그 성읍을 에워싸되 그것을 향하여 사다리를 세우고 그것을 향하여 흙으로 언덕을 쌓고 그것을 향하여 진을 치고 그것을 향하여 공성퇴를 둘러 세우고</p>
+                <p><span class="verse-number">3</span> 또 철판을 가져다가 너와 성읍 사이에 두어 철벽을 삼고 성을 포위하는 것처럼 에워싸라 이것이 이스라엘 족속에게 징조가 되리라</p>
+                
+                <strong>죄악을 담당하는 선지자</strong>
+                <p><span class="verse-number">4</span> 너는 또 왼쪽으로 누워 이스라엘 족속의 죄악을 짊어지되 네가 눕는 날수대로 그 죄악을 담당할지니라</p>
+                <p><span class="verse-number">5</span> 내가 그들의 범죄한 햇수대로 네게 날수를 정하였나니 곧 삼백구십 일이니라 너는 이렇게 이스라엘 족속의 죄악을 담당하고</p>
+                <p><span class="verse-number">6</span> 그 수가 차거든 너는 오른쪽으로 누워 유다 족속의 죄악을 담당하라 내가 네게 사십 일로 정하였나니 하루가 일 년이니라</p>
+                <p><span class="verse-number">7</span> 너는 또 네 얼굴을 에워싸인 예루살렘 쪽으로 향하고 팔을 걷어 올리고 예언하라</p>
+                <p><span class="verse-number">8</span> 내가 줄로 너를 동이리니 네가 에워싸는 날이 끝나기까지 몸을 이리 저리 돌리지 못하리라</p>
+                
+                <strong>기근과 고통의 예고</strong>
+                <p><span class="verse-number">9</span> 너는 밀과 보리와 콩과 팥과 조와 귀리를 가져다가 한 그릇에 담고 너를 위하여 떡을 만들어 네가 옆으로 눕는 날수 곧 삼백구십 일 동안 먹되</p>
+                <p><span class="verse-number">10</span> 너는 음식을 저울에 달아 하루 이십 세겔씩 때를 따라 먹고</p>
+                <p><span class="verse-number">11</span> 물도 육분의 일 힌씩 되어서 때를 따라 마시라</p>
+                <p><span class="verse-number">12</span> 너는 그것을 보리떡처럼 만들어 먹되 그들의 목전에서 인분 불을 피워 구울지니라</p>
+                <p><span class="verse-number">13</span> 또 여호와께서 이르시되 내가 여러 나라들로 쫓아내어 흩어 버릴 이스라엘 자손이 거기서 이같이 부정한 떡을 먹으리라 하시기로</p>
+                <p><span class="verse-number">14</span> 내가 말하되 아하 주 여호와여 나는 영혼을 더럽힌 일이 없었나이다 어려서부터 지금까지 스스로 죽은 것이나 짐승에게 찢긴 것을 먹지 아니하였고 가증한 고기를 입에 넣지 아니하였나이다</p>
+                <p><span class="verse-number">15</span> 여호와께서 내게 이르시되 보라 쇠똥으로 인분을 대신하기를 허락하노니 너는 그것으로 떡을 구울지니라</p>
+                <p><span class="verse-number">16</span> 또 내게 이르시되 인자야 내가 예루살렘에서 의뢰하는 양식을 끊으리니 백성이 근심 중에 떡을 달아 먹고 두려워 떨며 물을 되어 마시다가</p>
+                <p><span class="verse-number">17</span> 떡과 물이 부족하여 피차에 두려워하며 그 죄악 중에서 쇠패하리라</p>
             </div>
         </div>
 
-        <!-- 시편 40, 41편 카드 -->
-        <div class="chapter-card psalms-card">
-            <h2 style="border-color: var(--color-psalms);">시편 40, 41편</h2>
-            <div class="section" style="border-color: var(--color-psalms);">
-                <h3>개요 (Overview)</h3>
-                <p>시편 40편은 '기가 막힐 웅덩이'에서 건져주신 하나님의 구원에 대한 감격적인 찬양과 간증으로 시작하여, 형식적인 제사가 아닌 마음 중심의 순종을 기뻐하시는 하나님께 삶 전체를 드리겠다는 헌신으로 나아갑니다. 반면 시편 41편은 질병과 신뢰했던 친구의 배신이라는 극심한 고통 속에서 드리는 탄원시입니다. 시인은 가난한 자를 돌보는 자에게 주시는 하나님의 복을 선포하며, 원수들의 조롱과 배신 속에서도 하나님의 궁극적인 도우심과 승리를 확신하며 기도를 마칩니다.</p>
-            </div>
+        <!-- Card 4: 시편 40, 41편 -->
+        <div class="chapter-card card-book4">
+            <h2>시편 40, 41편: 구원의 감사와 배신 속의 신뢰</h2>
+            <h3>개요 (Overview)</h3>
+            <p>시편 40편은 기가 막힐 웅덩이에서 건져주신 하나님의 구원을 찬양하며, 형식적인 제사가 아닌 마음 중심의 순종을 다짐하는 감사의 노래입니다. 시편 41편은 분위기가 바뀌어, 신뢰했던 친구에게 배신당하는 고통 속에서 하나님의 도우심과 보호하심을 간구하는 탄원시입니다. 두 시편은 구원받은 성도가 겪는 삶의 기쁨과 고난을 모두 보여주며, 어떤 상황 속에서도 하나님을 의지해야 함을 노래합니다.</p>
 
-            <div class="section" style="border-color: var(--color-psalms);">
-                <h3>시각적 분석 (Visual Analysis)</h3>
-                <div class="svg-container">
-                    <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-                        <style>.label{font-family:'Noto Sans KR',sans-serif;font-size:11px;fill:#333}.title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:bold;fill:var(--color-psalms)}</style>
-                        <text x="200" y="25" text-anchor="middle" class="title" style="font-size:16px;">고난에서 구원으로, 배신에서 신뢰로</text>
-                        <!-- 시편 40편 -->
-                        <path d="M 50 200 C 50 120, 150 120, 150 200" fill="#a1887f"/>
-                        <text x="100" y="180" text-anchor="middle" class="label" fill="white">기가 막힐 웅덩이</text>
-                        <path d="M 100 150 L 100 80" stroke="var(--color-psalms)" stroke-width="2.5" fill="none" marker-end="url(#arrow-up)"/>
-                        <rect x="70" y="50" width="60" height="30" rx="5" fill="#e0f2f1"/>
-                        <text x="100" y="70" text-anchor="middle" class="label">반석 위의 새 노래</text>
-                        <text x="100" y="210" text-anchor="middle" class="title">시편 40편</text>
-                        <!-- 시편 41편 -->
-                        <rect x="230" y="100" width="140" height="40" rx="5" fill="#fce4ec"/>
-                        <text x="300" y="125" text-anchor="middle" class="label">병상과 친구의 배신</text>
-                        <path d="M 300 100 L 300 70" stroke="var(--color-ezekiel)" stroke-width="2.5" fill="none" marker-end="url(#arrow-up-y)"/>
-                        <text x="300" y="55" text-anchor="middle" class="label" fill="var(--color-ezekiel)">하나님을 신뢰</text>
-                        <text x="300" y="210" text-anchor="middle" class="title">시편 41편</text>
-                        <defs><marker id="arrow-up" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 5 0 L 10 10 L 0 10 Z" fill="var(--color-psalms)"/></marker><marker id="arrow-up-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 5 0 L 10 10 L 0 10 Z" fill="var(--color-ezekiel)"/></marker></defs>
-                    </svg>
-                </div>
-            </div>
+            <h3>시각적 분석 (Visual Analysis)</h3>
+            <svg class="svg-diagram" viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .svg-text { font-family: var(--font-main); font-size: 10px; fill: #333; }
+                        .svg-text-white { font-family: var(--font-main); font-size: 10px; fill: #fff; paint-order: stroke; stroke: #000; stroke-width: 0.3px; }
+                    </style>
+                </defs>
+                <!-- Psalm 40 -->
+                <rect x="10" y="10" width="180" height="30" rx="5" fill="#f2f5f8" stroke="#ccc"/>
+                <text x="100" y="30" text-anchor="middle" class="svg-text" style="font-weight:bold;">시편 40편: 구원의 노래</text>
 
-            <div class="section" style="border-color: var(--color-psalms);">
-                <h3>배경지식 및 신학적 통찰 (Context & Theology)</h3>
-                <p>두 시편 모두 다윗의 시로, 그의 파란만장한 생애를 배경으로 합니다. 신학적으로 이 시편들은 <strong>그리스도 예표론적(Christ-typological)</strong> 해석이 매우 중요합니다. 시편 40편의 "나의 하나님이여 내가 주의 뜻 행하기를 즐기오니"라는 순종의 고백은 히브리서 10장에서 예수 그리스도께서 자신의 몸을 단번에 제물로 드리기 위해 이 땅에 오신 순종의 선언으로 직접 인용됩니다. 이는 구약의 모든 제사가 그리스도의 완전한 제사를 통해 성취되었음을 보여줍니다. 또한, 시편 41편의 "내 떡을 먹던 나의 가까운 친구도 나를 대적하여"라는 구절은 요한복음 13장에서 예수님께서 가룟 유다의 배신을 예고하실 때 인용하신 말씀입니다. 이는 다윗의 고난이 장차 오실 메시야, 그리스도께서 겪으실 고난의 예고편이었음을 증거합니다. 성도는 이 시편을 통해 그리스도의 순종과 고난에 연합하며, 어떤 상황 속에서도 하나님의 구원을 신뢰하는 법을 배웁니다.</p>
-            </div>
+                <rect x="10" y="50" width="85" height="40" rx="5" fill="#DB4437"/>
+                <text x="52.5" y="75" text-anchor="middle" class="svg-text-white">기가 막힐 웅덩이</text>
+                
+                <path d="M 100 70 L 120 70" stroke="#555" stroke-width="2" marker-end="url(#arrow-head)"/>
+                
+                <rect x="125" y="50" width="65" height="40" rx="5" fill="#0F9D58"/>
+                <text x="157.5" y="75" text-anchor="middle" class="svg-text-white">반석 위</text>
+                
+                <path d="M 100 95 L 100 115" stroke="#555" stroke-width="2" marker-end="url(#arrow-head)"/>
+                <rect x="10" y="120" width="180" height="30" rx="5" fill="#4285F4"/>
+                <text x="100" y="140" text-anchor="middle" class="svg-text-white">새 노래, 순종의 다짐</text>
 
-            <div class="section" style="border-color: var(--color-psalms);">
-                <h3>주요 구절 해설 (Key Verse Commentary)</h3>
-                <div class="key-verse">
-                    <p><strong>시편 40:6-8</strong><br>"주께서 내 귀를 통하여 내게 들려 주시기를 제사와 예물을 기뻐하지 아니하시며... 나의 하나님이여 내가 주의 뜻 행하기를 즐기오니 주의 법이 나의 심중에 있나이다"</p>
-                    <p><strong>해설:</strong> 이 구절은 구약 제사 제도의 핵심을 꿰뚫는 통찰입니다. 하나님이 진정으로 원하시는 것은 동물의 피가 아니라, 마음에서 우러나오는 자발적인 순종과 헌신입니다. '내 귀를 통하여 들려주셨다'는 것은 순종할 준비가 된 종의 자세를 의미합니다. 이 완전한 순종은 오직 예수 그리스도를 통해 성취되었습니다. 히브리서 저자는 이 구절을 인용하여, 그리스도께서 자신의 몸을 제물로 드림으로써 불완전한 구약의 제사를 폐하고 영원한 구원을 이루셨음을 증거합니다. 매튜 헨리는 "그리스도의 순종은 모든 번제물보다 하나님을 더 기쁘시게 했다"고 말했습니다. 우리의 신앙 역시 형식적인 종교 행위를 넘어, 하나님의 말씀을 마음 깊이 새기고 그 뜻을 행하기를 즐거워하는 삶으로 나타나야 합니다.</p>
-                </div>
-                 <div class="key-verse">
-                    <p><strong>시편 41:9</strong><br>"내가 신뢰하여 내 떡을 나눠 먹던 나의 가까운 친구가 나를 대적하여 그의 발꿈치를 들었나이다"</p>
-                    <p><strong>해설:</strong> 이 구절은 가장 깊은 신뢰 관계가 깨어지는 배신의 고통을 노래합니다. 함께 떡을 나누는 행위는 고대 근동에서 생명과 신뢰를 공유하는 언약적 의미를 가집니다. 그런 친구의 배신은 육체적 질병보다 더 큰 고통입니다. 예수님은 이 구절을 최후의 만찬 석상에서 가룟 유다를 지목하며 인용하셨습니다(요 13:18). 이를 통해 다윗이 겪은 개인적인 고통이 인류 역사상 가장 비극적인 배신, 즉 제자가 스승을 팔아넘기는 사건을 예표했음이 드러납니다. 칼빈은 "그리스도께서 이 고통을 미리 맛보심으로, 우리는 가장 가까운 자에게 배신당할 때에도 그리스도 안에서 위로를 찾을 수 있다"고 설명했습니다. 이는 성도가 겪는 부당한 고난이 그리스도의 고난에 동참하는 의미 있는 흔적임을 가르칩니다.</p>
-                </div>
-            </div>
+                <!-- Psalm 41 -->
+                <rect x="210" y="10" width="180" height="30" rx="5" fill="#f2f5f8" stroke="#ccc"/>
+                <text x="300" y="30" text-anchor="middle" class="svg-text" style="font-weight:bold;">시편 41편: 고난 속의 신뢰</text>
+                
+                <rect x="210" y="50" width="180" height="40" rx="5" fill="#DB4437"/>
+                <text x="300" y="75" text-anchor="middle" class="svg-text-white">질병과 친구의 배신</text>
+                
+                <path d="M 300 95 L 300 115" stroke="#555" stroke-width="2" marker-end="url(#arrow-head)"/>
+                
+                <rect x="210" y="120" width="180" height="30" rx="5" fill="#0F9D58"/>
+                <text x="300" y="140" text-anchor="middle" class="svg-text-white">하나님의 붙드심을 신뢰</text>
+            </svg>
 
-            <div class="section full-text" style="border-color: var(--color-psalms);">
-                <h3>성경 본문 (Full Text)</h3>
-                <strong>시편 40편: 구원에 대한 감사와 기도</strong>
-                <p><span class="verse-number">1</span>내가 여호와를 기다리고 기다렸더니 귀를 기울이사 나의 부르짖음을 들으셨도다</p>
-                <p><span class="verse-number">2</span>나를 기가 막힐 웅덩이와 수렁에서 끌어올리시고 내 발을 반석 위에 두사 내 걸음을 견고하게 하셨도다</p>
-                <p><span class="verse-number">3</span>새 노래 곧 우리 하나님께 올릴 찬송을 내 입에 두셨으니 많은 사람이 보고 두려워하여 여호와를 의지하리로다</p>
-                <p><span class="verse-number">4</span>여호와를 의지하고 교만한 자와 거짓에 치우치는 자를 돌아보지 아니하는 자는 복이 있도다</p>
-                <p><span class="verse-number">5</span>여호와 나의 하나님이여 주께서 행하신 기적이 많고 우리를 향하신 주의 생각도 많아 누구도 주와 견줄 수가 없나이다 내가 널리 알려 말하고자 하나 너무 많아 그 수를 셀 수도 없나이다</p>
-                <p><span class="verse-number">6</span>주께서 내 귀를 통하여 내게 들려 주시기를 제사와 예물을 기뻐하지 아니하시며 번제와 속죄제를 요구하지 아니하신다 하신지라</p>
-                <p><span class="verse-number">7</span>그 때에 내가 말하기를 내가 왔나이다 나를 가리켜 기록한 것이 두루마리 책에 있나이다</p>
-                <p><span class="verse-number">8</span>나의 하나님이여 내가 주의 뜻 행하기를 즐기오니 주의 법이 나의 심중에 있나이다 하였나이다</p>
-                <p><span class="verse-number">9</span>내가 많은 회중 가운데에서 의의 기쁜 소식을 전하였나이다 여호와여 내가 내 입술을 닫지 아니할 줄을 주께서 아시나이다</p>
-                <p><span class="verse-number">10</span>내가 주의 공의를 내 심중에 숨기지 아니하고 주의 성실과 구원을 선포하였으며 내가 주의 인자와 진리를 많은 회중 가운데에서 감추지 아니하였나이다</p>
-                <p><span class="verse-number">11</span>여호와여 주의 긍휼을 내게서 거두지 마시고 주의 인자와 진리로 나를 항상 보호하소서</p>
-                <p><span class="verse-number">12</span>수많은 재앙이 나를 둘러싸고 나의 죄악이 나를 덮치므로 우러러볼 수도 없으며 죄가 나의 머리털보다 많으므로 내가 낙심하였음이니이다</p>
-                <p><span class="verse-number">13</span>여호와여 은총을 베푸사 나를 구원하소서 여호와여 속히 나를 도우소서</p>
-                <p><span class="verse-number">14</span>내 생명을 찾아 멸하려 하는 자는 다 수치와 낭패를 당하게 하시며 나의 해를 기뻐하는 자는 다 물러가 욕을 당하게 하소서</p>
-                <p><span class="verse-number">15</span>나를 향하여 하하 하하 하며 조소하는 자들이 자기 수치로 말미암아 놀라게 하소서</p>
-                <p><span class="verse-number">16</span>주를 찾는 자는 다 주 안에서 즐거워하고 기뻐하게 하시며 주의 구원을 사랑하는 자는 항상 말하기를 여호와는 위대하시다 하게 하소서</p>
-                <p><span class="verse-number">17</span>나는 가난하고 궁핍하오나 주께서는 나를 생각하시오니 주는 나의 도움이시요 나를 건지시는 이시라 나의 하나님이여 지체하지 마소서</p>
-                <strong>시편 41편: 병과 배신 중에 드리는 기도</strong>
-                <p><span class="verse-number">1</span>가난한 자를 보살피는 자에게 복이 있음이여 재앙의 날에 여호와께서 그를 건지시리로다</p>
-                <p><span class="verse-number">2</span>여호와께서 그를 지키사 살게 하시리니 그가 이 세상에서 복을 받을 것이라 주여 그를 그 원수들의 뜻에 맡기지 마소서</p>
-                <p><span class="verse-number">3</span>여호와께서 그를 병상에서 붙드시고 그가 누워 있을 때마다 그의 병을 고쳐 주시나이다</p>
-                <p><span class="verse-number">4</span>내가 말하기를 여호와여 내게 은혜를 베푸소서 내가 주께 범죄하였사오니 나를 고치소서 하였나이다</p>
-                <p><span class="verse-number">5</span>나의 원수가 내게 대하여 악담하기를 그가 어느 때에나 죽고 그의 이름이 언제나 없어질까 하며</p>
-                <p><span class="verse-number">6</span>나를 보러 와서는 거짓을 말하고 그의 중심에 악을 쌓았다가 나가서는 이를 널리 선포하오며</p>
-                <p><span class="verse-number">7</span>나를 미워하는 자가 다 하나같이 내게 대하여 수군거리고 나를 해하려고 꾀하며</p>
-                <p><span class="verse-number">8</span>이르기를 악한 병이 그에게 들었으니 이제 그가 눕고 다시 일어나지 못하리라 하오며</p>
-                <p><span class="verse-number">9</span>내가 신뢰하여 내 떡을 나눠 먹던 나의 가까운 친구가 나를 대적하여 그의 발꿈치를 들었나이다</p>
-                <p><span class="verse-number">10</span>그러하오나 주 여호와여 내게 은혜를 베푸시고 나를 일으키사 내가 그들에게 보응하게 하소서 이로써</p>
-                <p><span class="verse-number">11</span>내 원수가 나를 이기지 못하오니 주께서 나를 기뻐하시는 줄을 내가 알았나이다</p>
-                <p><span class="verse-number">12</span>주께서 나를 온전한 중에 붙드시고 영원히 주 앞에 세우시나이다</p>
-                <p><span class="verse-number">13</span>이스라엘의 하나님 여호와를 영원부터 영원까지 송축할지로다 아멘 아멘</p>
+            <h3>배경지식 및 신학적 통찰 (Context & Theology)</h3>
+            <p>시편 40편은 다윗의 시로, 그의 생애에 겪었던 수많은 위기에서 하나님께서 어떻게 자신을 건져주셨는지를 회고하며 감사를 드립니다. 특히 '내가 주의 뜻 행하기를 즐기오니'라는 고백은 율법의 외적 준수를 넘어선, 마음 중심의 순종을 강조합니다. 히브리서 10장은 이 구절을 인용하여, 예수 그리스도께서 단번에 드리신 순종의 제사가 구약의 모든 동물 제사를 완성하셨음을 설명합니다. 따라서 이 시는 다윗 개인의 노래이면서 동시에 장차 오실 메시아의 순종을 예표하는 시입니다. 시편 41편 역시 다윗의 시로, 그가 병들고 쇠약해졌을 때 가장 믿었던 친구(아히도벨로 추정)에게 배신당한 아픔을 노래합니다. 이 또한 장차 가룟 유다에게 배신당하실 예수 그리스도의 고난을 미리 보여주는 예언적 성격을 가집니다. 성도는 그리스도 안에서 구원의 기쁨을 누리지만, 동시에 세상에서 그리스도께서 겪으신 것과 같은 고난과 배신을 겪을 수 있음을 보여줍니다.</p>
+
+            <h3>주요 구절 해설 (Key Verse Commentary)</h3>
+            <p><strong>시편 40:8</strong> "나의 하나님이여 내가 주의 뜻 행하기를 즐기오니 주의 법이 나의 심중에 있나이다 하였나이다"</p>
+            <p>이 구절은 참된 경건의 본질을 보여줍니다. 하나님이 기뻐하시는 것은 억지로 드리는 제물이나 행위가 아니라, 마음에서 우러나오는 자발적인 순종입니다. '주의 법이 나의 심중에 있다'는 것은 율법이 더 이상 돌판에 새겨진 외부의 규율이 아니라, 내면화되어 삶의 원리가 되었음을 의미합니다. 이는 예레미야가 예언한 새 언약의 성취를 보여주는 모습입니다. 이 완벽한 순종은 오직 예수 그리스도를 통해서만 가능했습니다. 우리는 그리스도 안에서 이 구절의 기쁨을 맛보며, 성령의 도우심으로 하나님의 뜻 행하기를 즐거워하는 삶을 추구해야 합니다.</p>
+            <p><strong>시편 41:9</strong> "내가 신뢰하여 내 떡을 나눠 먹던 나의 가까운 친구도 나를 대적하여 그의 발꿈치를 들었나이다"</p>
+            <p>가장 깊은 상처는 가장 가까운 사람에게서 옵니다. 다윗은 자신과 함께 식탁 교제를 나누던, 즉 가장 친밀한 관계에 있던 친구의 배신에 깊은 고통을 느낍니다. 이 구절은 예수님께서 최후의 만찬 자리에서 가룟 유다의 배신을 예고하실 때 직접 인용하셨습니다(요 13:18). 다윗이 겪은 이 고통은 인류를 구원하시기 위해 가장 사랑하는 제자에게 팔리시는 그리스도의 고난의 그림자였습니다. 이 구절은 우리에게 성도라 할지라도 세상에서 억울한 배신과 아픔을 겪을 수 있음을 위로하며, 그럴 때일수록 우리를 온전히 이해하시고 붙들어주시는 주님을 바라보게 합니다.</p>
+
+            <h3>성경 본문 (Full Text)</h3>
+            <div class="bible-text">
+                <strong>시편 40편</strong>
+                <p><span class="verse-number">1</span> 내가 여호와를 기다리고 기다렸더니 귀를 기울이사 나의 부르짖음을 들으셨도다</p>
+                <p><span class="verse-number">2</span> 나를 기가 막힐 웅덩이와 수렁에서 끌어올리시고 내 발을 반석 위에 두사 내 걸음을 견고하게 하셨도다</p>
+                <p><span class="verse-number">3</span> 새 노래 곧 우리 하나님께 올릴 찬송을 내 입에 두셨으니 많은 사람이 보고 두려워하여 여호와를 의지하리로다</p>
+                <p><span class="verse-number">4</span> 여호와를 의지하고 교만한 자와 거짓에 치우치는 자를 돌아보지 아니하는 자는 복이 있도다</p>
+                <p><span class="verse-number">5</span> 여호와 나의 하나님이여 주께서 행하신 기적이 많고 우리를 향하신 주의 생각도 많아 누구도 주와 견줄 수가 없나이다 내가 널리 알려 말하고자 하나 너무 많아 그 수를 셀 수도 없나이다</p>
+                <p><span class="verse-number">6</span> 주께서 내 귀를 통하여 내게 들려 주시기를 제사와 예물을 기뻐하지 아니하시며 번제와 속죄제를 요구하지 아니하신다 하신지라</p>
+                <p><span class="verse-number">7</span> 그 때에 내가 말하기를 내가 왔나이다 나를 가리켜 기록한 것이 두루마리 책에 있나이다</p>
+                <p><span class="verse-number">8</span> 나의 하나님이여 내가 주의 뜻 행하기를 즐기오니 주의 법이 나의 심중에 있나이다 하였나이다</p>
+                <p><span class="verse-number">9</span> 내가 많은 회중 가운데에서 의의 기쁜 소식을 전하였나이다 여호와여 내가 내 입술을 닫지 아니할 줄을 주께서 아시나이다</p>
+                <p><span class="verse-number">10</span> 내가 주의 공의를 내 심중에 숨기지 아니하고 주의 성실과 구원을 선포하였으며 내가 주의 인자와 진리를 많은 회중 가운데에서 감추지 아니하였나이다</p>
+                <p><span class="verse-number">11</span> 여호와여 주의 긍휼을 내게서 거두지 마시고 주의 인자와 진리로 나를 항상 보호하소서</p>
+                <p><span class="verse-number">12</span> 수많은 재앙이 나를 둘러싸고 나의 죄악이 나를 덮치므로 우러러볼 수도 없으며 죄가 나의 머리털보다 많으므로 내가 낙심하였음이니이다</p>
+                <p><span class="verse-number">13</span> 여호와여 은총을 베푸사 나를 구원하소서 여호와여 속히 나를 도우소서</p>
+                <p><span class="verse-number">14</span> 내 생명을 찾아 멸하려 하는 자는 다 수치와 낭패를 당하게 하시며 나의 해를 기뻐하는 자는 다 물러가 욕을 당하게 하소서</p>
+                <p><span class="verse-number">15</span> 나를 향하여 하하 하하 하며 조소하는 자들이 자기 수치로 말미암아 놀라게 하소서</p>
+                <p><span class="verse-number">16</span> 주를 찾는 자는 다 주 안에서 즐거워하고 기뻐하게 하시며 주의 구원을 사랑하는 자는 항상 말하기를 여호와는 위대하시다 하게 하소서</p>
+                <p><span class="verse-number">17</span> 나는 가난하고 궁핍하오나 주께서는 나를 생각하시오니 주는 나의 도움이시요 나를 건지시는 이시라 나의 하나님이여 지체하지 마소서</p>
+                
+                <strong>시편 41편</strong>
+                <p><span class="verse-number">1</span> 가난한 자를 보살피는 자에게 복이 있음이여 재앙의 날에 여호와께서 그를 건지시리로다</p>
+                <p><span class="verse-number">2</span> 여호와께서 그를 지키사 살게 하시리니 그가 이 세상에서 복을 받을 것이라 주여 그를 그 원수들의 뜻에 맡기지 마소서</p>
+                <p><span class="verse-number">3</span> 여호와께서 그를 병상에서 붙드시고 그가 누워 있을 때마다 그의 병을 고쳐 주시나이다</p>
+                <p><span class="verse-number">4</span> 내가 말하기를 여호와여 내게 은혜를 베푸소서 내가 주께 범죄하였사오니 나를 고치소서 하였나이다</p>
+                <p><span class="verse-number">5</span> 나의 원수가 내게 대하여 악담하기를 그가 어느 때에나 죽고 그의 이름이 언제나 없어질까 하며</p>
+                <p><span class="verse-number">6</span> 나를 보러 와서는 거짓을 말하고 그의 중심에 악을 쌓았다가 나가서는 이를 널리 선포하오며</p>
+                <p><span class="verse-number">7</span> 나를 미워하는 자가 다 하나같이 내게 대하여 수군거리고 나를 해하려고 꾀하며</p>
+                <p><span class="verse-number">8</span> 이르기를 악한 병이 그에게 들었으니 이제 그가 눕고 다시 일어나지 못하리라 하오며</p>
+                <p><span class="verse-number">9</span> 내가 신뢰하여 내 떡을 나눠 먹던 나의 가까운 친구도 나를 대적하여 그의 발꿈치를 들었나이다</p>
+                <p><span class="verse-number">10</span> 그러하오나 주 여호와여 내게 은혜를 베푸시고 나를 일으키사 내가 그들에게 보응하게 하소서 이로써</p>
+                <p><span class="verse-number">11</span> 내 원수가 나를 이기지 못하오니 주께서 나를 기뻐하시는 줄을 내가 알았나이다</p>
+                <p><span class="verse-number">12</span> 주께서 나를 온전한 중에 붙드시고 영원히 주 앞에 세우시나이다</p>
+                <p><span class="verse-number">13</span> 이스라엘의 하나님 여호와를 영원부터 영원까지 송축할지로다 아멘 아멘</p>
             </div>
         </div>
 
-        <!-- [수정됨] 통합적 이해 카드 -->
+        <!-- Integration Card -->
         <div class="chapter-card integration-card">
-            <h2 style="border-color: var(--color-integration);">통합적 이해: 주의 뜻을 행하는 삶의 네 가지 차원</h2>
-            
-            <div class="section" style="border-color: var(--color-integration);">
-                <h3>관통하는 주제 (Overarching Theme)</h3>
-                <p>오늘의 네 본문은 서로 다른 시대와 상황 속에서 '주의 뜻을 행하는 삶'이 구체적으로 어떤 모습으로 나타나는지를 입체적으로 보여줍니다. 그것은 단순히 율법을 지키는 행위를 넘어, <strong>하나님의 주권적 섭리를 신뢰하고, 세상과 구별된 거룩함을 지키며, 이해할 수 없는 고난 속에서도 순종하고, 배신과 고통의 순간에도 하나님을 찬양하는 전인격적인 헌신</strong>입니다. 이 모든 모습은 궁극적으로 자신의 뜻이 아닌 아버지의 뜻을 온전히 이루기 위해 십자가의 길을 걸어가신 예수 그리스도의 삶에서 완벽하게 성취되었습니다.</p>
-            </div>
+            <h2>통합적 이해: 주의 길을 기다리는 자의 복</h2>
+            <h3>관통하는 주제 (Overarching Theme)</h3>
+            <p>오늘의 네 본문은 '주의 길을 기다리는 자의 복'이라는 주제로 연결됩니다. 인간의 어리석음(나발), 죄성(고린도 교회), 반역(이스라엘)이 하나님의 공의로운 심판을 불러오지만, 하나님은 그 가운데서도 지혜로운 길(아비가일), 거룩한 삶(성도의 정체성), 대속적 고난(에스겔), 그리고 온전한 신뢰(다윗)를 통해 당신의 백성을 구원하고 보호하십니다. 개인적인 복수를 멈추고 하나님의 심판을 기다린 다윗, 세상의 방식 대신 고난을 감수하라고 권면받는 고린도 교회, 묵묵히 심판의 날을 감당하는 에스겔, 배신 속에서도 주께서 붙드실 것을 믿는 시편 기자는 모두 자신의 때와 방법이 아닌, 하나님의 때와 방법을 기다리는 자의 모습을 보여줍니다.</p>
 
-            <div class="section" style="border-color: var(--color-integration);">
-                <h3>구속사의 파노라마 (시각적 고리)</h3>
-                <div class="svg-container">
-                    <svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
-                        <style>.label{font-family:'Noto Sans KR',sans-serif;font-size:10px;fill:#333}.title{font-family:'Noto Serif KR',serif;font-size:12px;font-weight:bold;}.sam{fill:var(--color-samuel)}.cor{fill:var(--color-corinthians)}.eze{fill:var(--color-ezekiel)}.psa{fill:var(--color-psalms)}.chr{fill:#c62828}</style>
-                        <defs><marker id="arrowhead" viewBox="0 -5 10 10" refX="5" refY="0" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,-5L10,0L0,5" fill="#546e7a"></path></marker></defs>
-                        <!-- OT -->
-                        <g transform="translate(60, 75)">
-                            <rect x="-55" y="-45" width="110" height="90" rx="5" fill="#f5f5f5"/>
-                            <text x="0" y="-30" text-anchor="middle" class="title">구약의 예표</text>
-                            <text x="0" y="0" text-anchor="middle" class="title sam">삼상</text><text x="0" y="12" text-anchor="middle" class="label">섭리 속의 중재</text>
-                            <text x="-30" y="30" text-anchor="middle" class="title eze">겔</text><text x="-30" y="42" text-anchor="middle" class="label">대리 고난</text>
-                            <text x="30" y="30" text-anchor="middle" class="title psa">시</text><text x="30" y="42" text-anchor="middle" class="label">순종과 고난</text>
-                        </g>
-                        <!-- Arrow 1 -->
-                        <path d="M 120 75 H 220" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowhead)"/>
-                        <!-- NT -->
-                        <g transform="translate(280, 75)">
-                             <rect x="-55" y="-25" width="110" height="50" rx="5" fill="#e3f2fd"/>
-                            <text x="0" y="-5" text-anchor="middle" class="title cor">고린도전서</text>
-                            <text x="0" y="12" text-anchor="middle" class="label">그리스도 안의 새 정체성</text>
-                        </g>
-                        <!-- Arrow 2 -->
-                        <path d="M 340 75 H 400" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowhead)"/>
-                        <!-- Christ -->
-                        <g transform="translate(440, 75)">
-                            <circle cx="0" cy="0" r="30" fill="#ffebee"/>
-                            <text x="0" y="0" text-anchor="middle" dominant-baseline="central" class="title chr">그리스도</text>
-                             <text x="0" y="15" text-anchor="middle" class="label">모든 예표의 성취</text>
-                        </g>
-                    </svg>
-                </div>
-            </div>
-            
-            <div class="section" style="border-color: var(--color-integration);">
-                <h3 style="margin-bottom: 5px;">본문별 연결고리 및 구속사적 맥락</h3>
-                <p style="margin-top:0;">오늘의 본문들은 구속사의 큰 그림 안에서 점진적으로 그리스도를 드러내는 중요한 연결고리들입니다. 각 본문은 불완전한 그림자로서, 실체이신 그리스도의 완전한 사역을 더욱 선명하게 기대하게 만듭니다.</p>
-                <h4 style="font-size:1.1em; margin-bottom:0; margin-top:15px; color: var(--color-samuel);">사무엘상 25장: 더 완전한 중재자이신 그리스도</h4>
-                <p style="margin-top:5px;">아비가일은 지혜로운 중재로 다윗의 분노를 잠재우고 임박한 유혈극을 막았습니다. 그녀의 모습은 죄인들을 향한 하나님의 진노를 막아서는 중보자의 그림자입니다. 그러나 아비가일의 중재는 일시적이었고 한 가정을 구했을 뿐입니다. 이는 자신의 몸을 찢어 하나님과 원수 된 온 인류 사이의 영원한 화평을 이루신 더 위대한 중보자, 예수 그리스도를 가리킵니다. 아비가일이 예물로 다윗의 마음을 돌이켰다면, 그리스도는 자신의 피를 화목제물로 드려 하나님의 공의를 만족시키셨습니다.</p>
-                <h4 style="font-size:1.1em; margin-bottom:0; margin-top:15px; color: var(--color-corinthians);">고린도전서 6장: 그리스도 안에서 얻는 새로운 신분</h4>
-                <p style="margin-top:5px;">바울은 세상의 방식으로 다투는 고린도 교인들에게 그들의 새로운 신분을 상기시킵니다. 그들은 더 이상 세상에 속한 자가 아니라 '그리스도의 이름과 성령 안에서 씻음과 거룩함과 의롭다 하심을 받은' 자들입니다. 이 새로운 신분은 오직 그리스도의 십자가와 부활을 통해서만 가능합니다. 그분의 죽으심으로 우리의 옛사람이 죽었고, 그분의 부활로 우리가 새 생명을 얻어 성령의 전이 되었습니다. 따라서 세상과 구별된 거룩한 삶은 우리의 노력이 아닌, 그리스도께서 이미 이루신 구속 사역에 근거한 당연한 열매입니다.</p>
-                <h4 style="font-size:1.1em; margin-bottom:0; margin-top:15px; color: var(--color-ezekiel);">에스겔 4장: 참된 고난의 종, 그리스도</h4>
-                <p style="margin-top:5px;">에스겔은 백성의 죄를 상징적으로 짊어지는 고통스러운 행위를 명령받습니다. 그의 대리 고난은 불완전하고 상징적이었지만, 장차 오실 참된 고난의 종을 예표합니다. 에스겔이 430일간 상징적으로 죄를 짊어졌다면, 이사야 53장이 예언한 대로 예수 그리스도는 인류의 모든 죄악을 실제로 '담당'하시고 '짊어'지셨습니다. 에스겔의 고통이 이스라엘의 심판을 예고했다면, 그리스도의 고통은 믿는 모든 자에게 구원을 가져왔습니다. 선지자의 불완전한 순종은 십자가 위에서 아버지의 뜻에 온전히 복종하신 아들의 완전한 순종을 통해 성취됩니다.</p>
-                <h4 style="font-size:1.1em; margin-bottom:0; margin-top:15px; color: var(--color-psalms);">시편 40, 41편: 그리스도의 순종과 고난의 목소리</h4>
-                <p style="margin-top:5px;">시편은 다윗의 입을 통해 장차 오실 메시아의 마음을 노래합니다. 시편 40편의 "내가 주의 뜻 행하기를 즐기오니"라는 고백은 히브리서에서 그리스도께서 십자가의 제사를 드리기 위해 이 땅에 오신 순종의 선언으로 직접 인용됩니다. 또한 시편 41편에서 가장 신뢰했던 친구에게 배신당하는 다윗의 고통은, 가룟 유다에게 배신당하실 예수님의 고난을 미리 보여주는 예언적 목소리입니다. 이처럼 다윗의 삶은 불완전했지만, 그의 순종과 고난은 더 위대한 다윗의 자손이신 예수 그리스도의 완전한 순종과 대속적 고난을 가리키는 중요한 이정표였습니다.</p>
-            </div>
+            <h3>구속사의 파노라마 (Panorama of Redemptive History)</h3>
+            <svg class="svg-diagram" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+                <defs><style>.svg-text{font-family:var(--font-main);font-size:9px;fill:#333;}.svg-text-white{font-family:var(--font-main);font-size:9px;fill:#fff;paint-order:stroke;stroke:#000;stroke-width:0.3px;}</style></defs>
+                <path d="M 10 60 L 390 60" stroke="#ccc" stroke-width="2"/>
+                <circle cx="50" cy="60" r="5" fill="var(--color-book1)"/>
+                <text x="50" y="50" text-anchor="middle" class="svg-text">왕정 시대</text>
+                <text x="50" y="80" text-anchor="middle" class="svg-text">[삼상25]</text>
+                <text x="50" y="90" text-anchor="middle" class="svg-text">인간 왕의 한계</text>
 
-            <div class="section" style="border-color: var(--color-integration);">
-                <h3>주제별 심층 분석표</h3>
-                <table class="analysis-table">
-                    <thead>
-                        <tr>
-                            <th class="theme-col">주제</th>
-                            <th>사무엘상 25</th>
-                            <th>고린도전서 6</th>
-                            <th>에스겔 4</th>
-                            <th>시편 40, 41</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="theme-col">하나님의 주권/섭리</td>
-                            <td>아비가일을 통해 다윗의 복수를 막으시는 하나님의 섭리</td>
-                            <td>성도를 세상을 판단할 자로 세우신 주권</td>
-                            <td>죄악의 햇수대로 심판의 날수를 정하시는 공의</td>
-                            <td>기가 막힐 웅덩이에서 건지시는 구원의 주권자</td>
-                        </tr>
-                        <tr>
-                            <td class="theme-col">인간의 죄</td>
-                            <td>나발의 교만과 어리석음, 다윗의 혈기와 분노</td>
-                            <td>성도 간의 소송, 성적 부도덕과 우상숭배</td>
-                            <td>이스라엘과 유다의 오랜 죄악</td>
-                            <td>시인의 죄 고백과 신뢰했던 친구의 배신</td>
-                        </tr>
-                        <tr>
-                            <td class="theme-col">순종과 헌신</td>
-                            <td>개인적인 복수를 포기하고 하나님의 심판을 기다리는 순종</td>
-                            <td>몸을 성령의 전으로 알고 거룩하게 구별하여 드리는 헌신</td>
-                            <td>이해할 수 없는 고통 속에서 말씀을 따르는 순종</td>
-                            <td>형식적 제사가 아닌, 주의 뜻 행하기를 즐거워하는 마음의 순종</td>
-                        </tr>
-                        <tr>
-                            <td class="theme-col">그리스도 예표</td>
-                            <td>지혜로운 중재자 아비가일의 모습</td>
-                            <td>성도의 몸은 그리스도의 지체이며, 값으로 사신 것임</td>
-                            <td>백성의 죄를 대신 담당하는 선지자의 대리 고난</td>
-                            <td>완전한 순종의 아들(시40), 배신당하는 메시아(시41)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <circle cx="150" cy="60" r="5" fill="var(--color-book3)"/>
+                <text x="150" y="50" text-anchor="middle" class="svg-text">포로기</text>
+                <text x="150" y="80" text-anchor="middle" class="svg-text">[겔4]</text>
+                <text x="150" y="90" text-anchor="middle" class="svg-text">심판과 대속의 예표</text>
+                
+                <circle cx="250" cy="60" r="5" fill="var(--color-book2)"/>
+                <text x="250" y="50" text-anchor="middle" class="svg-text">교회 시대</text>
+                <text x="250" y="80" text-anchor="middle" class="svg-text">[고전6]</text>
+                <text x="250" y="90" text-anchor="middle" class="svg-text">성령의 전, 거룩한 삶</text>
 
-            <div class="section" style="border-color: var(--color-integration);">
-                <h3>오늘의 교훈 (Application)</h3>
-                <p>우리의 삶에도 나발의 어리석음으로 인한 분노, 세상의 유혹, 이해할 수 없는 고난, 가까운 이의 배신이 찾아옵니다. 오늘 말씀은 이러한 순간에 우리가 어떻게 '주의 뜻을 행하는 삶'을 살 수 있는지 가르쳐줍니다. 첫째, 나의 복수는 하나님의 손에 맡기고 그분의 공의를 신뢰해야 합니다. 둘째, 나의 몸이 성령의 전임을 기억하고 모든 영역에서 거룩함을 추구해야 합니다. 셋째, 때로는 고통스럽더라도 말씀에 순종하는 것이 가장 안전한 길임을 믿어야 합니다. 마지막으로, 어떤 고난 속에서도 우리를 위해 순종의 길을 먼저 걸어가신 그리스도를 바라보며 찬양과 신뢰를 잃지 말아야 합니다. 우리의 순종은 구원의 조건이 아니라, 이미 받은 구원에 대한 감사와 사랑의 반응입니다.</p>
-            </div>
+                <circle cx="350" cy="60" r="5" fill="var(--color-book4)"/>
+                <text x="350" y="40" text-anchor="middle" class="svg-text">모든 시대</text>
+                <text x="350" y="80" text-anchor="middle" class="svg-text">[시40,41]</text>
+                <text x="350" y="90" text-anchor="middle" class="svg-text">그리스도의 순종과 고난</text>
+                <text x="350" y="100" text-anchor="middle" class="svg-text">성도의 신뢰</text>
+            </svg>
+
+            <h3>본문별 연결고리 및 구속사적 맥락 (Redemptive-Historical Context)</h3>
+            <p>네 본문은 모두 예수 그리스도를 향하고 있습니다. <strong>사무엘상 25장</strong>에서 다윗은 개인적인 복수를 멈춤으로써 참된 왕이신 그리스도의 모습을 희미하게 보여줍니다. 그리스도는 원수 갚는 것을 하나님께 맡기시고 십자가에서 우리를 위해 죽으셨습니다. <strong>고린도전서 6장</strong>은 그리스도께서 피 값으로 사신 성도들이 어떻게 세상과 구별된 삶을 살아야 하는지, 즉 '성령의 전'으로서의 정체성을 보여줍니다. <strong>에스겔 4장</strong>에서 선지자가 백성의 죄를 대신 짊어지는 모습은, 온 인류의 죄를 홀로 담당하신 그리스도의 대속적 고난의 정점을 예표합니다. <strong>시편 40, 41편</strong>은 그리스도의 완전한 순종('주의 뜻 행하기를 즐기오니')과 그분이 당하신 배신의 고난('내 가까운 친구도')을 동시에 예언하며, 그분을 믿는 성도들 또한 이 땅에서 구원의 기쁨과 고난의 길을 함께 걷게 될 것을 보여줍니다.</p>
+
+            <h3>주제별 심층 분석표 (Thematic Analysis Table)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>주제</th>
+                        <th>사무엘상 25</th>
+                        <th>고린도전서 6</th>
+                        <th>에스겔 4</th>
+                        <th>시편 40, 41</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>인간의 죄/어리석음</strong></td>
+                        <td>나발의 모욕, 다윗의 분노</td>
+                        <td>성도 간 소송, 성적 부도덕</td>
+                        <td>이스라엘과 유다의 오랜 범죄</td>
+                        <td>친구의 배신, 죄악으로 인한 낙심</td>
+                    </tr>
+                    <tr>
+                        <td><strong>하나님의 개입/은혜</strong></td>
+                        <td>아비가일의 지혜, 나발을 직접 심판</td>
+                        <td>성도를 씻고 거룩하게 하심</td>
+                        <td>심판을 통한 공의의 실현</td>
+                        <td>웅덩이에서 건지심, 병상에서 붙드심</td>
+                    </tr>
+                    <tr>
+                        <td><strong>성도의 마땅한 반응</strong></td>
+                        <td>복수를 멈추고 하나님을 찬양</td>
+                        <td>차라리 손해를 감수, 몸으로 영광 돌림</td>
+                        <td>고통 속에서 말씀에 순종</td>
+                        <td>주의 뜻 행하기를 즐거워함, 신뢰함</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>오늘의 교훈 (Application)</h3>
+            <p>오늘 말씀을 통해 우리는 삶의 여러 갈등과 고난 앞에서 어떻게 반응해야 할지를 배웁니다. 억울한 일을 당했을 때, 다윗처럼 나의 칼을 의지하기보다 하나님의 공의로운 심판을 기다리는 지혜가 필요합니다. 공동체 안에서 다툼이 생겼을 때, 세상의 방법으로 해결하기보다 그리스도 안에서 손해를 감수하는 성숙함을 보여야 합니다. 이해할 수 없는 고난이 닥칠 때, 에스겔처럼 그 안에 담긴 하나님의 뜻을 묵묵히 신뢰하며 순종의 길을 걸어야 합니다. 가장 가까운 사람에게 상처받았을 때, 시편 기자처럼 고통을 정직하게 아뢰면서도 끝까지 나를 붙드시는 주님의 손길을 의지해야 합니다. 이 모든 길의 결국은 우리를 반석 위에 세우시고, 우리 입에 새 노래를 주시는 하나님의 신실하심으로 귀결될 것입니다.</p>
         </div>
+
+        <footer>© 2025 KBD 맥체인 성경읽기 프로젝트</footer>
     </div>
 
-    <footer>
-        <p>© 2025 KBD 맥체인 성경읽기 프로젝트</p>
-    </footer>
+    <div class="floating-controls">
+        <audio id="audioPlayer" src="https://sen0991-my.sharepoint.com/:u:/g/personal/mathtox_munhyeon_hs_kr/EXbGQ8qXktZNtBVklNRI6fMBE4DLdJmv3DNlu340t367_A?download=1" preload="metadata"></audio>
+        <button id="playPauseBtn" class="play-pause-btn" aria-label="Play or Pause Audio">
+            <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+            <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+        </button>
+    </div>
 
     <script>
-        // 오디오 제어 스크립트
-        const audio = document.getElementById('bible-audio');
-        const audioControl = document.getElementById('audio-control');
-        
-        audioControl.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play().catch(e => console.error("Audio play failed:", e));
-                audioControl.textContent = '❚❚';
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+
+        function togglePlayPause() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
             } else {
-                audio.pause();
-                audioControl.textContent = '▶';
+                audioPlayer.pause();
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        playPauseBtn.addEventListener('click', togglePlayPause);
+
+        window.addEventListener('keydown', (event) => {
+            if (event.code === 'Space') {
+                // Prevent the default spacebar action (like scrolling)
+                event.preventDefault();
+                togglePlayPause();
             }
         });
-
-        audio.onended = () => {
-            audioControl.textContent = '▶';
-        };
-        audio.onerror = () => {
-            console.error("오디오 파일을 재생할 수 없습니다. 링크를 확인해주세요.");
-            alert("오디오 파일을 재생하는데 문제가 발생했습니다.");
-            audioControl.textContent = 'X';
-            audioControl.style.backgroundColor = '#dc3545';
-        }
-
-        // Q&A 모달 UI 제어 스크립트
-        const modal = document.getElementById("qa-modal");
-        const fab = document.getElementById("qa-fab");
-        const closeButton = document.getElementsByClassName("close-button")[0];
-
-        fab.onclick = () => modal.style.display = "block";
-        closeButton.onclick = () => modal.style.display = "none";
-        window.onclick = (event) => {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Gemini API와 연동하는 Q&A 스크립트
-        async function askQuestion(event) {
-            event.preventDefault();
-            const input = document.getElementById('question-input');
-            const question = input.value.trim();
-            if (question === '') return;
-
-            const conversation = document.getElementById('conversation');
-
-            // 사용자 메시지 UI에 추가
-            const userMessage = document.createElement('div');
-            userMessage.className = 'message user-message';
-            userMessage.textContent = question;
-            conversation.appendChild(userMessage);
-            input.value = '';
-            conversation.scrollTop = conversation.scrollHeight;
-            
-            // AI 생각 중 메시지 UI에 추가
-            const thinkingMessage = document.createElement('div');
-            thinkingMessage.className = 'message ai-message';
-            thinkingMessage.innerHTML = '<i>맥체인 AI가 답변을 생성중입니다...</i>';
-            conversation.appendChild(thinkingMessage);
-            conversation.scrollTop = conversation.scrollHeight;
-            
-            // AI에게 보낼 상세 프롬프트 구성
-            const systemPrompt = `당신은 '맥체인'이라는 이름의 AI 성경 해설가입니다. 당신의 답변은 반드시 다음 원칙을 따라야 합니다:
-1. 모든 답변은 철저하게 개혁주의 신학(Reformed Theology) 관점을 유지합니다.
-2. 오늘의 맥체인 성경읽기 본문은 사무엘상 25장, 고린도전서 6장, 에스겔 4장, 시편 40-41편입니다. 사용자의 질문을 이 본문들과 최대한 연결하여 설명해주세요.
-3. 친절하고 이해하기 쉬운 튜터와 같은 어조를 사용해주세요.
-4. 답변은 한국어로 해주세요.`;
-            
-            const fullPrompt = `${systemPrompt}\n\n사용자 질문: ${question}`;
-
-            try {
-                // 서버리스 함수(/api/ask-gemini)에 요청 전송
-                const response = await fetch('/api/ask-gemini', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt: fullPrompt }),
-                });
-
-                if (!response.ok) {
-                    throw new Error(`서버 응답 오류: ${response.status}`);
-                }
-
-                const result = await response.json();
-                
-                // Gemini API의 응답에서 텍스트 추출
-                const aiResponseText = result.candidates[0].content.parts[0].text;
-                
-                // '생각 중' 메시지를 실제 답변으로 교체
-                thinkingMessage.textContent = aiResponseText;
-
-            } catch (error) {
-                console.error('Q&A Error:', error);
-                thinkingMessage.innerHTML = '죄송합니다, 답변을 생성하는 중에 오류가 발생했습니다. 잠시 후 다시 시도해주세요.';
-                thinkingMessage.style.color = 'red';
-            } finally {
-                conversation.scrollTop = conversation.scrollHeight;
-            }
-        }
+        
+        audioPlayer.addEventListener('ended', () => {
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        });
     </script>
 </body>
 </html>
